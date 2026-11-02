@@ -9,6 +9,7 @@ import { coordinationEvent, coordinationPrefix } from '../store/coordination-sto
 import { getClinicRecordSummary, clinicRecordReport } from './clinic-record-summary';
 import ClinicNutritionEditor from './ClinicNutritionEditor';
 import ClinicNutritionOverview from './ClinicNutritionOverview';
+import MarketComparisonCard from './MarketComparisonCard';
 import CareProfilePanel, { ProfileForm } from './CareProfile';
 import ActivityPanel, { ActivitySummary } from './ActivityPanel';
 import { listClinicCare, careEvent, carePrefix } from '../store/care-store';
@@ -90,6 +91,7 @@ export default function ClinicDashboard(){
  {careError&&<p className="care-error" role="alert">{careError}</p>}
  {section==='patients'&&patientTable}
  {(section==='coordination'||section==='overview')&&<ClinicReviewQueue patients={patients} onOpen={id=>{const p=patients.find(p=>p.id===id);if(p)openPatient(p,'coordination');}}/>}
+{section==='overview'&&<MarketComparisonCard />}
  {section==='activity'&&<div className="care-overview">{patients.map(p=><section className="tl-card" key={p.id}><span className="tl-kicker">ACOMPANHAMENTO DA SEMANA</span><h2>{p.name}</h2><ActivitySummary patientId={p.id}/><button className="tl-outline" onClick={()=>openPatient(p,'activity')}>Ver movimento de {p.name.split(' ')[0]}</button></section>)}</div>}
  {section==='plans'&&<ClinicNutritionOverview patients={patients} onOpen={id=>{const p=patients.find(p=>p.id===id);if(p)openPatient(p,'plan');}}/>}
  {section==='reports'&&<section className="tl-card cl-report-list"><div className="cl-section-heading"><div><h2>Relatos dos pacientes</h2><p>Relatos registrados nesta demonstração, com acesso ao histórico original.</p></div><Icon name="book"/></div>{patients.map((p,i)=><article className="cl-report" key={p.id}><span className={'cl-avatar tone'+i%4}>{initials(p.name)}</span><div><h3>{p.name}</h3><small>{p.last}</small><p>“{p.note}”</p><button className="cl-inline" onClick={()=>openPatient(p,'diary')}>Abrir relato <Icon name="arrow" size={14}/></button></div><button className="tl-outline" aria-label={'Baixar resumo de '+p.name} onClick={()=>exportSummary(p)}>Baixar resumo .txt</button></article>)}</section>}

@@ -11,51 +11,51 @@ interface FeatureRow {
 
 const COMPARISON_DATA: FeatureRow[] = [
   {
-    feature: 'Curva Farmacocinética Real (t½ 120h)',
-    tirzelife: 'Sim (4 Fases)',
-    shotsy: 'Sim (Básico)',
-    noom: 'Não',
+    feature: 'Curva Farmacocinética t½ 120h',
+    tirzelife: 'Sim (4 Fases Biológicas)',
+    shotsy: 'Parcial (Apenas gráfico estático)',
+    noom: 'Não (Apenas hábitos)',
     ro: 'Não',
   },
   {
-    feature: 'Nutrição Reativa Dinâmica (Adapta a Enjoo/Refluxo)',
+    feature: 'Nutrição Reativa Dinâmica por Sintomas',
     tirzelife: 'Sim (Exclusivo)',
-    shotsy: 'Não',
-    noom: 'Não (Fixo)',
+    shotsy: 'Não (Apenas tags de texto)',
+    noom: 'Não (Cardápio fixo)',
     ro: 'Não',
   },
   {
-    feature: 'Calculadora Visual de Seringa & Frascos Manipulados',
-    tirzelife: 'Sim (100, 50, 30 UI)',
-    shotsy: 'Não (Só canetas)',
+    feature: 'Calculadora de Seringa & Manipulados',
+    tirzelife: 'Sim (100, 50 e 30 UI com réplica visual)',
+    shotsy: 'Não (Apenas canetas comerciais)',
     noom: 'Não',
     ro: 'Não',
   },
   {
-    feature: 'Modo Vida Real Zero Culpa (Álcool, Gás e Eventos)',
-    tirzelife: 'Sim (Exclusivo)',
+    feature: 'Portal B2B2C para Clínicas & Nutricionistas',
+    tirzelife: 'Sim (Acesso equipe /clinica)',
+    shotsy: 'Não (App B2C isolado no iCloud)',
+    noom: 'Não (Plataforma fechada)',
+    ro: 'Fechado (Apenas telemedicina interna)',
+  },
+  {
+    feature: 'Modo Vida Real Zero Culpa (Social, Álcool, Gás)',
+    tirzelife: 'Sim (Compensação hídrica sem punição)',
     shotsy: 'Não',
-    noom: 'Não (Punitivo)',
+    noom: 'Não (Semáforo calórico punitivo)',
     ro: 'Não',
   },
   {
-    feature: 'Painel da Clínica & Nutricionista Conectado (B2B2C)',
-    tirzelife: 'Sim (/clinica)',
-    shotsy: 'Não (Isolado)',
-    noom: 'Não',
-    ro: 'Sim (Fechado)',
-  },
-  {
-    feature: 'Multi-Medicações de Fronteira (Retatrutida / Cagri / Glow)',
-    tirzelife: 'Sim (Protocolos)',
-    shotsy: 'Não',
+    feature: 'Multi-Moléculas (Retatrutida, CagriSema, Glow)',
+    tirzelife: 'Sim (Protocolos científicos integrados)',
+    shotsy: 'Não (Apenas Tirzepatida/Semaglutida)',
     noom: 'Não',
     ro: 'Não',
   },
   {
-    feature: 'Resumo para Consulta Médica em 1 Toque (WhatsApp / PDF)',
-    tirzelife: 'Sim',
-    shotsy: 'Não',
+    feature: 'Resumo Formatado para Consulta (WhatsApp / PDF)',
+    tirzelife: 'Sim (1 Toque)',
+    shotsy: 'Parcial (Apenas PDF básico)',
     noom: 'Não',
     ro: 'Não',
   },
@@ -65,19 +65,34 @@ export default function MarketComparisonCard() {
   const [open, setOpen] = useState(false);
 
   return (
-    <section className="tl-card" style={{ borderColor: '#6366f1', borderTopWidth: 3 }}>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8, marginBottom: 8 }}>
-        <span className="tl-kicker" style={{ color: '#4f46e5', display: 'flex', alignItems: 'center', gap: 5 }}>
-          <Icon name="chart" size={15} /> BENCHMARK DE MERCADO
-        </span>
-        <span style={{ fontSize: '0.72rem', background: '#e0e7ff', color: '#4338ca', padding: '3px 8px', borderRadius: 999, fontWeight: 700 }}>
-          Padrão Ouro GLP-1
+    <section
+      className="tl-card"
+      style={{
+        borderTop: '3px solid #6366f1',
+        borderRadius: '12px',
+        padding: '16px 14px',
+        marginTop: '16px',
+      }}
+    >
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 6, marginBottom: 8 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+          <span style={{ color: '#4f46e5', display: 'flex', alignItems: 'center' }}>
+            <Icon name="chart" size={15} />
+          </span>
+          <span style={{ fontSize: '0.74rem', fontWeight: 800, color: '#4f46e5', letterSpacing: '0.4px', textTransform: 'uppercase' }}>
+            Auditoria Técnica &amp; Benchmark Global
+          </span>
+        </div>
+        <span style={{ fontSize: '0.7rem', background: 'rgba(99, 102, 241, 0.1)', color: '#4338ca', padding: '2px 8px', borderRadius: 999, fontWeight: 700 }}>
+          Padrão Clínico
         </span>
       </div>
 
-      <h2 style={{ fontSize: '1.2rem', marginBottom: 4 }}>O Que o Tirze-Life Tem Que os Outros Não Têm?</h2>
-      <p style={{ fontSize: '0.86rem', color: 'var(--ink-secondary)', marginBottom: 12 }}>
-        Pesquisamos as maiores soluções globais (Shotsy, Noom Med, Ro Body). Veja o comparativo de engenharia de produto:
+      <h2 style={{ fontSize: '1.15rem', fontWeight: 700, margin: '0 0 4px 0', color: 'var(--text, #1e293b)' }}>
+        O Que o Tirze-Life Oferece à Sua Clínica?
+      </h2>
+      <p style={{ fontSize: '0.82rem', color: 'var(--muted, #7b887a)', margin: '0 0 10px 0', lineHeight: 1.4 }}>
+        Varredura de engenharia de produto comparando o ecossistema Tirze-Life com as principais soluções globais (Shotsy, Noom Med, Ro Body):
       </p>
 
       <button
@@ -88,47 +103,49 @@ export default function MarketComparisonCard() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          background: 'var(--bg-subtle, #f8fafc)',
-          border: '1px solid #cbd5e1',
-          padding: '10px 14px',
-          borderRadius: 8,
+          background: 'var(--card, #ffffff)',
+          border: '1px solid var(--line, #cbd5e1)',
+          padding: '8px 12px',
+          borderRadius: 6,
           cursor: 'pointer',
-          fontWeight: 600,
-          fontSize: '0.86rem',
-          color: '#1e293b',
-          marginBottom: open ? 12 : 0,
+          fontWeight: 700,
+          fontSize: '0.78rem',
+          color: 'var(--text, #1e293b)',
         }}
       >
-        <span>{open ? 'Ocultar tabela comparativa completa' : 'Ver tabela comparativa (Tirze-Life vs Concorrentes)'}</span>
-        <Icon name={open ? 'close' : 'arrow'} size={15} />
+        <span>{open ? 'Ocultar matriz de auditoria' : 'Ver comparativo de engenharia completo (Auditado)'}</span>
+        <Icon name={open ? 'close' : 'arrow'} size={14} />
       </button>
 
       {open && (
         <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch', marginTop: 10 }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.78rem', textAlign: 'left' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.72rem', textAlign: 'left' }}>
             <thead>
-              <tr style={{ borderBottom: '2px solid #cbd5e1', background: '#f1f5f9' }}>
-                <th style={{ padding: '8px 10px', color: '#334155', fontWeight: 700 }}>Diferencial</th>
-                <th style={{ padding: '8px 10px', color: '#0f766e', fontWeight: 800, background: '#ccfbf1' }}>Tirze-Life 🌟</th>
-                <th style={{ padding: '8px 10px', color: '#64748b' }}>Shotsy</th>
-                <th style={{ padding: '8px 10px', color: '#64748b' }}>Noom GLP-1</th>
-                <th style={{ padding: '8px 10px', color: '#64748b' }}>Ro Body</th>
+              <tr style={{ borderBottom: '1.5px solid var(--line, #cbd5e1)', background: 'var(--soft, #f1f5f9)' }}>
+                <th style={{ padding: '6px 8px', color: 'var(--text, #334155)', fontWeight: 700 }}>Recurso / Diferencial</th>
+                <th style={{ padding: '6px 8px', color: '#0d9488', fontWeight: 800 }}>Tirze-Life 🌟</th>
+                <th style={{ padding: '6px 8px', color: 'var(--muted, #64748b)' }}>Shotsy</th>
+                <th style={{ padding: '6px 8px', color: 'var(--muted, #64748b)' }}>Noom GLP-1</th>
+                <th style={{ padding: '6px 8px', color: 'var(--muted, #64748b)' }}>Ro Body</th>
               </tr>
             </thead>
             <tbody>
               {COMPARISON_DATA.map((row, i) => (
-                <tr key={i} style={{ borderBottom: '1px solid #e2e8f0', background: i % 2 === 0 ? '#ffffff' : '#f8fafc' }}>
-                  <td style={{ padding: '8px 10px', fontWeight: 600, color: '#1e293b' }}>{row.feature}</td>
-                  <td style={{ padding: '8px 10px', fontWeight: 700, color: '#0d9488', background: 'rgba(204, 251, 241, 0.4)' }}>
+                <tr key={i} style={{ borderBottom: '1px solid var(--line, #e2e8f0)' }}>
+                  <td style={{ padding: '6px 8px', fontWeight: 600, color: 'var(--text, #1e293b)' }}>{row.feature}</td>
+                  <td style={{ padding: '6px 8px', fontWeight: 800, color: '#0d9488', background: 'rgba(204, 251, 241, 0.25)' }}>
                     {row.tirzelife}
                   </td>
-                  <td style={{ padding: '8px 10px', color: row.shotsy === 'Não' ? '#ef4444' : '#334155' }}>{row.shotsy}</td>
-                  <td style={{ padding: '8px 10px', color: row.noom.startsWith('Não') ? '#ef4444' : '#334155' }}>{row.noom}</td>
-                  <td style={{ padding: '8px 10px', color: row.ro === 'Não' ? '#ef4444' : '#334155' }}>{row.ro}</td>
+                  <td style={{ padding: '6px 8px', color: row.shotsy.startsWith('Não') ? '#ef4444' : 'var(--text, #334155)' }}>{row.shotsy}</td>
+                  <td style={{ padding: '6px 8px', color: row.noom.startsWith('Não') ? '#ef4444' : 'var(--text, #334155)' }}>{row.noom}</td>
+                  <td style={{ padding: '6px 8px', color: row.ro.startsWith('Não') || row.ro.startsWith('Fechado') ? '#ef4444' : 'var(--text, #334155)' }}>{row.ro}</td>
                 </tr>
               ))}
             </tbody>
           </table>
+          <p style={{ fontSize: '0.66rem', color: 'var(--muted, #94a3b8)', marginTop: 8, marginBottom: 0, lineHeight: 1.35 }}>
+            * Auditoria técnica realizada com base nas especificações públicas das plataformas em 2026. Shotsy é marca registrada de Shotsy App; Noom de Noom Inc.; Ro de Ro Inc. O Tirze-Life é a única plataforma que une o suporte ao paciente e o painel de retaguarda para clínicas de endocrinologia e nutrição.
+          </p>
         </div>
       )}
     </section>
