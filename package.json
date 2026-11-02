@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "scripts": {
-    "build": "npm --prefix apps/mobile ci && npm --prefix apps/mobile run export:web",
+    "build": "cd apps/mobile && npm install --no-audit --no-fund && npx expo export --platform web",
     "mobile": "npm --prefix apps/mobile run web",
     "test:mobile": "npm --prefix apps/mobile test"
   }

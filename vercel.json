@@ -1,5 +1,5 @@
 {
-  "buildCommand": "npm run build",
+  "buildCommand": "cd apps/mobile && npm install --no-audit --no-fund && npx expo export --platform web",
   "outputDirectory": "apps/mobile/dist",
   "cleanUrls": true,
   "rewrites": [
