@@ -1,0 +1,49 @@
+{
+  "checkedAt": "2026-10-22T21:14:29.409Z",
+  "scope": "Selected contrast pairs, local font, themes, mobile navigation, skip links, guide and template exports; not a complete accessibility audit.",
+  "results": [
+    {
+      "surface": "patient",
+      "theme": "clean",
+      "textContrast": 13.264385395802668,
+      "mutedContrast": 5.575116040583268,
+      "accentContrast": 5.671199357509169
+    },
+    {
+      "surface": "patient",
+      "theme": "dark",
+      "textContrast": 16.763033476272295,
+      "mutedContrast": 8.861077178177165,
+      "accentContrast": 8.739812339756797
+    },
+    {
+      "surface": "patient",
+      "theme": "warm",
+      "textContrast": 13.181543108163078,
+      "mutedContrast": 5.540296834651251,
+      "accentContrast": 5.6357800663458635
+    },
+    {
+      "surface": "clinic",
+      "theme": "clean",
+      "textContrast": 13.264385395802668,
+      "mutedContrast": 5.575116040583268,
+      "accentContrast": 5.671199357509169
+    },
+    {
+      "surface": "clinic",
+      "theme": "dark",
+      "textContrast": 16.763033476272295,
+      "mutedContrast": 8.861077178177165,
+      "accentContrast": 8.739812339756797
+    },
+    {
+      "surface": "clinic",
+      "theme": "warm",
+      "textContrast": 13.181543108163078,
+      "mutedContrast": 5.540296834651251,
+      "accentContrast": 5.6357800663458635
+    }
+  ],
+  "errors": []
+}

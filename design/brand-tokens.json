@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "brand": "Tirzelife",
+  "font": "Inter",
+  "colors": {
+    "navy": "#172e45",
+    "primary": "#0369a1",
+    "primaryHover": "#075985",
+    "sky": "#38bdf8",
+    "background": "#f8fafc",
+    "surface": "#ffffff",
+    "text": "#172e45",
+    "muted": "#52677e",
+    "line": "#d6e2ed",
+    "soft": "#eaf5fd",
+    "success": "#0f766e",
+    "warning": "#92400e",
+    "danger": "#b91c1c",
+    "dark": "#0b1220",
+    "darkCard": "#111c2e",
+    "darkMuted": "#a3b4ca"
+  },
+  "themes": {
+    "dark": {
+      "bg": "#0b1220",
+      "card": "#111c2e",
+      "sidebar": "#0d1727",
+      "text": "#edf3fa",
+      "muted": "#a3b4ca",
+      "line": "#33475f",
+      "accent": "#38bdf8",
+      "green": "#34d399",
+      "soft": "#152c40",
+      "active": "#142d40",
+      "life": "#152c40",
+      "life-text": "#edf3fa",
+      "life-muted": "#a3b4ca"
+    },
+    "clean": {
+      "bg": "#f8fafc",
+      "card": "#ffffff",
+      "sidebar": "#ffffff",
+      "text": "#172e45",
+      "muted": "#52677e",
+      "line": "#d6e2ed",
+      "accent": "#0369a1",
+      "green": "#0f766e",
+      "soft": "#eff7fc",
+      "active": "#eaf5fd",
+      "life": "#eff7fc",
+      "life-text": "#172e45",
+      "life-muted": "#52677e"
+    },
+    "warm": {
+      "bg": "#faf9f6",
+      "card": "#fffefa",
+      "sidebar": "#f5f4ed",
+      "text": "#172e45",
+      "muted": "#52677e",
+      "line": "#d9dedf",
+      "accent": "#0369a1",
+      "green": "#0f766e",
+      "soft": "#eef4f7",
+      "active": "#e7f1f8",
+      "life": "#f4eee6",
+      "life-text": "#61452d",
+      "life-muted": "#72593f"
+    }
+  }
+}

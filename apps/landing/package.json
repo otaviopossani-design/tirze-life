@@ -1,0 +1,11 @@
+{
+  "name": "tirzelife-landing",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "start": "node server.mjs",
+    "test": "node --test tests/build.test.mjs"
+  }
+}

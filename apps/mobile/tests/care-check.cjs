@@ -1,0 +1,108 @@
+const {chromium}=require('playwright');
+const assert=require('node:assert/strict');
+(async()=>{
+ const browser=await chromium.launch({channel:'msedge',headless:true});
+ const context=await browser.newContext({viewport:{width:1500,height:1100},timezoneId:'America/Sao_Paulo',reducedMotion:'reduce'});
+ context.setDefaultTimeout(12000);
+ const patient=await context.newPage(),clinic=await context.newPage(),errors=[];
+ for(const p of [patient,clinic])p.on('pageerror',e=>errors.push(e.message));
+ const nav=p=>p.getByRole('navigation',{name:p===clinic?'Navegação da clínica':'Navegação principal',exact:true});
+ async function fillProfile(p,name){
+  await p.getByLabel('Nome completo',{exact:true}).fill(name);
+  await p.getByLabel('Data de nascimento',{exact:true}).fill('1988-03-14');
+  await p.getByLabel('Altura em centímetros',{exact:true}).fill('170');
+  await p.getByLabel('Peso atual em quilos',{exact:true}).fill('89,5');
+ }
+ try{
+  await patient.goto('http://localhost:8081/?view=profile',{waitUntil:'networkidle'});
+  await patient.getByRole('heading',{name:'Cadastro e medidas',exact:true}).waitFor();
+  await patient.getByRole('button',{name:'Editar cadastro',exact:true}).click();
+  await patient.getByLabel('Peso atual em quilos',{exact:true}).fill('81,8');
+  await patient.getByRole('button',{name:'Salvar cadastro',exact:true}).click();
+  await patient.getByRole('status').filter({hasText:'Cadastro salvo'}).waitFor();
+  await patient.reload({waitUntil:'networkidle'});
+  assert.ok(await patient.getByText('81,8 kg',{exact:true}).count());
+  await clinic.goto('http://localhost:8081/clinica',{waitUntil:'networkidle'});
+  await clinic.getByRole('button',{name:'Abrir ficha de Marina Oliveira',exact:true}).click();
+  await clinic.getByRole('tab',{name:'Cadastro',exact:true}).click();
+  await clinic.getByRole('cell',{name:'81,8 kg',exact:true}).waitFor();
+  await clinic.getByRole('button',{name:'Editar cadastro',exact:true}).click();
+  await clinic.getByLabel('Peso atual em quilos',{exact:true}).fill('80,1');
+  await patient.getByRole('button',{name:'Editar cadastro',exact:true}).click();
+  await patient.getByLabel('Peso atual em quilos',{exact:true}).fill('81,4');
+  await patient.getByRole('button',{name:'Salvar cadastro',exact:true}).click();
+  await clinic.getByRole('button',{name:'Salvar cadastro',exact:true}).click();
+  await clinic.getByRole('alert').filter({hasText:'mudou em outra aba'}).waitFor();
+  await clinic.getByRole('button',{name:'Cancelar edição',exact:true}).click();
+  await clinic.getByRole('cell',{name:'81,4 kg',exact:true}).waitFor();
+  await clinic.getByRole('tab',{name:'Movimento',exact:true}).click();
+  await nav(patient).getByRole('button',{name:'Movimento',exact:true}).click();
+  await patient.getByRole('button',{name:'Registrar apoio na parede',exact:true}).click();
+  assert.equal(await patient.getByLabel('Atividade realizada').inputValue(),'wall');
+  await patient.getByLabel('Minutos realizados').fill('9');
+  await patient.getByLabel('Observações da atividade').fill('Atividade compartilhada no teste');
+  await patient.getByRole('button',{name:'Salvar atividade',exact:true}).click();
+  await clinic.getByText('Atividade compartilhada no teste',{exact:true}).waitFor();
+  await patient.reload({waitUntil:'networkidle'});
+  await patient.getByText('Atividade compartilhada no teste',{exact:true}).waitFor();
+  const logged=patient.locator('.care-log-item').filter({hasText:'Atividade compartilhada no teste'});
+  await logged.getByRole('button',{name:/Remover registro/}).click();
+  await logged.getByRole('button',{name:'Confirmar remoção'}).click();
+  await clinic.getByText('Atividade compartilhada no teste',{exact:true}).waitFor({state:'hidden'});
+  await clinic.getByRole('button',{name:'Fechar ficha',exact:true}).click();
+  await clinic.getByRole('button',{name:'Novo paciente',exact:true}).click();
+  await fillProfile(clinic,'Paciente Cadastro Clínica');
+  await clinic.getByRole('button',{name:'Concluir cadastro',exact:true}).click();
+  await clinic.getByRole('button',{name:'Abrir ficha de Paciente Cadastro Clínica',exact:true}).waitFor();
+  await clinic.reload({waitUntil:'networkidle'});
+  await clinic.getByRole('button',{name:'Abrir ficha de Paciente Cadastro Clínica',exact:true}).click();
+  await clinic.getByRole('tab',{name:'Cadastro',exact:true}).click();
+  const newLink=await clinic.getByRole('link',{name:'Abrir movimento no app deste paciente'}).getAttribute('href');
+  await patient.goto('http://localhost:8081'+newLink,{waitUntil:'networkidle'});
+  assert.equal(await patient.locator('.care-log-item').count(),0);
+  await clinic.getByRole('button',{name:'Fechar ficha',exact:true}).click();
+  await patient.goto('http://localhost:8081/?cadastro=1',{waitUntil:'networkidle'});
+  await fillProfile(patient,'Paciente Individual');
+  await patient.getByRole('button',{name:'Concluir cadastro',exact:true}).click();
+  await patient.getByRole('heading',{name:'Cadastro e medidas',exact:true}).waitFor();
+  assert.ok(patient.url().includes('B2C-'));
+  await patient.reload({waitUntil:'networkidle'});
+  await patient.getByRole('heading',{name:'Paciente Individual',exact:true}).waitFor();
+  await clinic.reload({waitUntil:'networkidle'});
+  assert.equal(await clinic.getByRole('button',{name:'Abrir ficha de Paciente Individual',exact:true}).count(),0);
+  await nav(patient).getByRole('button',{name:'Movimento',exact:true}).click();
+  assert.equal(await patient.locator('.care-log-item').count(),0);
+  await patient.getByLabel('Minutos realizados').fill('10');
+  await patient.getByRole('button',{name:'Salvar atividade',exact:true}).click();
+  assert.equal(await patient.locator('.care-log-item').count(),1);
+  for(const theme of ['Escuro','Claro','Suave']){
+   await patient.getByRole('button',{name:theme}).click();
+   assert.equal(await patient.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
+  }
+  await patient.evaluate(()=>window.scrollTo(0,0));
+  await patient.screenshot({path:'care-activity-desktop.png',fullPage:true});
+  await patient.setViewportSize({width:390,height:844});
+  await patient.getByRole('button',{name:'Escuro'}).click();
+  await patient.evaluate(()=>window.scrollTo(0,0));
+  await patient.screenshot({path:'care-activity-mobile.png',fullPage:true});
+  for(const width of [390,320]){
+   await patient.setViewportSize({width,height:844});
+   assert.equal(await patient.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
+   const mobile=patient.getByRole('navigation',{name:'Navegação móvel',exact:true});
+   await mobile.getByRole('button',{name:'Meu cadastro',exact:true}).click();
+   assert.equal(await patient.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
+   await patient.getByRole('button',{name:'Editar cadastro',exact:true}).click();
+   assert.equal(await patient.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
+   await patient.getByRole('button',{name:'Cancelar edição',exact:true}).click();
+   await mobile.getByRole('button',{name:'Movimento',exact:true}).click();
+  }
+  await clinic.setViewportSize({width:320,height:844});
+  await clinic.getByRole('navigation',{name:'Navegação móvel da clínica',exact:true}).getByRole('button',{name:'Movimento',exact:true}).click();
+  assert.equal(await clinic.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
+  await clinic.getByRole('button',{name:'Ver movimento de Marina',exact:true}).click();
+  assert.equal(await clinic.getByRole('dialog').evaluate(e=>e.scrollWidth<=e.clientWidth),true);
+  await clinic.screenshot({path:'care-clinic-mobile.png',fullPage:true});
+  assert.deepEqual(errors,[]);
+  console.log('PASS cadastro B2B/B2C, medidas, persistência, isolamento, atividades, sincronização entre abas, remoção, 3 temas, desktop e mobile 320/390.');
+ }finally{await browser.close();}
+})().catch(e=>{console.error(e);process.exitCode=1;});

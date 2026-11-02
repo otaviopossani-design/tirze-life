@@ -1,0 +1,94 @@
+[
+  {
+    "name": "sem aplicações",
+    "ages": [],
+    "phase": "NO_DATA",
+    "expectedMg": 0
+  },
+  {
+    "name": "dose futura",
+    "ages": [
+      -24
+    ],
+    "phase": "NO_DATA",
+    "expectedMg": 0
+  },
+  {
+    "name": "absorção no instante zero",
+    "ages": [
+      0
+    ],
+    "phase": "ABSORPTION",
+    "expectedMg": 0
+  },
+  {
+    "name": "antes do pico",
+    "ages": [
+      23.999
+    ],
+    "phase": "ABSORPTION",
+    "expectedMg": 1.8572896758951538
+  },
+  {
+    "name": "início do pico",
+    "ages": [
+      24
+    ],
+    "phase": "PEAK_ACTION",
+    "expectedMg": 1.8573044745760356
+  },
+  {
+    "name": "fim do pico",
+    "ages": [
+      72
+    ],
+    "phase": "PEAK_ACTION",
+    "expectedMg": 1.6441874926137734
+  },
+  {
+    "name": "estabilidade",
+    "ages": [
+      72.001
+    ],
+    "phase": "STABLE_PLATEAU",
+    "expectedMg": 1.6441784112144642
+  },
+  {
+    "name": "meia-vida",
+    "ages": [
+      120
+    ],
+    "phase": "STABLE_PLATEAU",
+    "expectedMg": 1.2499153390793865
+  },
+  {
+    "name": "cauda",
+    "ages": [
+      120.001
+    ],
+    "phase": "HALF_LIFE_TAIL",
+    "expectedMg": 1.2499081260786913
+  },
+  {
+    "name": "acúmulo semanal",
+    "ages": [
+      48,
+      216,
+      384,
+      552,
+      720,
+      888
+    ],
+    "phase": "PEAK_ACTION",
+    "expectedMg": 3.0008574241607304
+  },
+  {
+    "name": "dose futura não muda fase",
+    "ages": [
+      -10,
+      96
+    ],
+    "phase": "STABLE_PLATEAU",
+    "expectedMg": 1.4352096064884432
+  }
+]

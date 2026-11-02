@@ -1,0 +1,681 @@
+{
+  "brand": "Tirzelife",
+  "reviewedAt": "2026-10-22",
+  "timezone": "America/Sao_Paulo",
+  "status": "rascunho_sem_agendamento",
+  "note": "Horários experimentais. Preparar peças; adiar divulgação com links até existir domínio público. Etapas internas não são posts.",
+  "days": [
+    {
+      "day": 1,
+      "date": "2026-10-26",
+      "weekday": "segunda-feira",
+      "title": "O cuidado continua depois da consulta.",
+      "audience": "Ambos",
+      "status": "rascunho",
+      "channels": [
+        {
+          "channel": "Instagram",
+          "format": "Reel",
+          "time": "19:30",
+          "adaptation": "Seguir roteiro e legenda do calendário original.",
+          "sourceDay": 1
+        },
+        {
+          "channel": "TikTok",
+          "format": "Vídeo vertical",
+          "time": "19:30",
+          "adaptation": "Abrir com uma dúvida ou tarefa. Usar narração própria, legendas e arquivo limpo. Revisar corte e chamada disponível na conta."
+        },
+        {
+          "channel": "Facebook",
+          "format": "Vídeo original",
+          "time": "19:30",
+          "adaptation": "Acrescentar explicação autossuficiente na descrição; link para a página adequada somente após publicação do domínio."
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "date": "2026-10-27",
+      "weekday": "terça-feira",
+      "title": "Da ficha ao plano: como funciona o fluxo?",
+      "audience": "B2B",
+      "status": "rascunho",
+      "channels": [
+        {
+          "channel": "Instagram",
+          "format": "Carrossel",
+          "time": "12:15",
+          "adaptation": "Seguir roteiro e legenda do calendário original.",
+          "sourceDay": 2
+        },
+        {
+          "channel": "Facebook",
+          "format": "Sequência de imagens",
+          "time": "12:15",
+          "adaptation": "Adaptar o carrossel com contexto e pergunta específica, sem induzir relatos de saúde em comentários públicos."
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "date": "2026-10-28",
+      "weekday": "quarta-feira",
+      "title": "Qual recurso você quer conhecer melhor?",
+      "audience": "Ambos",
+      "status": "rascunho",
+      "channels": [
+        {
+          "channel": "Instagram",
+          "format": "Stories",
+          "time": "19:30",
+          "adaptation": "Seguir roteiro e legenda do calendário original.",
+          "sourceDay": 3
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "date": "2026-10-29",
+      "weekday": "quinta-feira",
+      "title": "Clicou no perfil alimentar. O que muda?",
+      "audience": "B2C",
+      "status": "rascunho",
+      "channels": [
+        {
+          "channel": "Instagram",
+          "format": "Reel",
+          "time": "12:15",
+          "adaptation": "Seguir roteiro e legenda do calendário original.",
+          "sourceDay": 4
+        },
+        {
+          "channel": "TikTok",
+          "format": "Vídeo vertical",
+          "time": "12:15",
+          "adaptation": "Abrir com uma dúvida ou tarefa. Usar narração própria, legendas e arquivo limpo. Revisar corte e chamada disponível na conta."
+        },
+        {
+          "channel": "Google / site",
+          "format": "Revisão editorial",
+          "time": null,
+          "adaptation": "Revisar: o que acontece entre consultas"
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "date": "2026-10-30",
+      "weekday": "sexta-feira",
+      "title": "Por trás de uma tela, uma pergunta: isso ajuda na rotina?",
+      "audience": "Ambos",
+      "status": "rascunho",
+      "channels": [
+        {
+          "channel": "Instagram",
+          "format": "Foto / arte",
+          "time": "19:30",
+          "adaptation": "Seguir roteiro e legenda do calendário original.",
+          "sourceDay": 5
+        },
+        {
+          "channel": "Facebook",
+          "format": "Foto e texto",
+          "time": "19:30",
+          "adaptation": "Usar imagem própria e texto explicativo. Sem depoimento inventado."
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "date": "2026-10-31",
+      "weekday": "sábado",
+      "title": "Uma pausa para entender a plataforma",
+      "audience": "Ambos",
+      "status": "rascunho",
+      "channels": [
+        {
+          "channel": "Instagram",
+          "format": "Stories",
+          "time": "10:00",
+          "adaptation": "Seguir roteiro e legenda do calendário original.",
+          "sourceDay": 6
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "date": "2026-11-01",
+      "weekday": "domingo",
+      "title": "Revisar a semana, sem publicação",
+      "audience": "Ambos",
+      "status": "rascunho",
+      "channels": [
+        {
+          "channel": "Instagram",
+          "format": "Revisão interna",
+          "time": "17:00",
+          "adaptation": "Seguir roteiro e legenda do calendário original.",
+          "sourceDay": 7
+        }
+      ]
+    },
+    {
+      "day": 8,
+      "date": "2026-11-02",
+      "weekday": "segunda-feira",
+      "title": "Seu cadastro começa por você.",
+      "audience": "B2C",
+      "status": "rascunho",
+      "channels": [
+        {
+          "channel": "Instagram",
+          "format": "Reel",
+          "time": "19:30",
+          "adaptation": "Seguir roteiro e legenda do calendário original.",
+          "sourceDay": 8
+        },
+        {
+          "channel": "TikTok",
+          "format": "Vídeo vertical",
+          "time": "19:30",
+          "adaptation": "Abrir com uma dúvida ou tarefa. Usar narração própria, legendas e arquivo limpo. Revisar corte e chamada disponível na conta."
+        },
+        {
+          "channel": "Facebook",
+          "format": "Vídeo original",
+          "time": "19:30",
+          "adaptation": "Acrescentar explicação autossuficiente na descrição; link para a página adequada somente após publicação do domínio."
+        }
+      ]
+    },
+    {
+      "day": 9,
+      "date": "2026-11-03",
+      "weekday": "terça-feira",
+      "title": "Rascunho e publicação não são a mesma coisa.",
+      "audience": "B2B",
+      "status": "rascunho",
+      "channels": [
+        {
+          "channel": "Instagram",
+          "format": "Carrossel",
+          "time": "12:15",
+          "adaptation": "Seguir roteiro e legenda do calendário original.",
+          "sourceDay": 9
+        },
+        {
+          "channel": "Facebook",
+          "format": "Sequência de imagens",
+          "time": "12:15",
+          "adaptation": "Adaptar o carrossel com contexto e pergunta específica, sem induzir relatos de saúde em comentários públicos."
+        }
+      ]
+    },
+    {
+      "day": 10,
+      "date": "2026-11-04",
+      "weekday": "quarta-feira",
+      "title": "Qual recurso você quer conhecer melhor?",
+      "audience": "Ambos",
+      "status": "rascunho",
+      "channels": [
+        {
+          "channel": "Instagram",
+          "format": "Stories",
+          "time": "19:30",
+          "adaptation": "Seguir roteiro e legenda do calendário original.",
+          "sourceDay": 10
+        }
+      ]
+    },
+    {
+      "day": 11,
+      "date": "2026-11-05",
+      "weekday": "quinta-feira",
+      "title": "O que você fez hoje também pode virar um registro.",
+      "audience": "B2C",
+      "status": "rascunho",
+      "channels": [
+        {
+          "channel": "Instagram",
+          "format": "Reel",
+          "time": "12:15",
+          "adaptation": "Seguir roteiro e legenda do calendário original.",
+          "sourceDay": 11
+        },
+        {
+          "channel": "TikTok",
+          "format": "Vídeo vertical",
+          "time": "12:15",
+          "adaptation": "Abrir com uma dúvida ou tarefa. Usar narração própria, legendas e arquivo limpo. Revisar corte e chamada disponível na conta."
+        },
+        {
+          "channel": "Google / site",
+          "format": "Revisão editorial",
+          "time": null,
+          "adaptation": "Preparar: histórico para conversar com a equipe"
+        }
+      ]
+    },
+    {
+      "day": 12,
+      "date": "2026-11-06",
+      "weekday": "sexta-feira",
+      "title": "Seu histórico não é uma previsão.",
+      "audience": "B2C",
+      "status": "rascunho",
+      "channels": [
+        {
+          "channel": "Instagram",
+          "format": "Foto / arte",
+          "time": "19:30",
+          "adaptation": "Seguir roteiro e legenda do calendário original.",
+          "sourceDay": 12
+        },
+        {
+          "channel": "Facebook",
+          "format": "Foto e texto",
+          "time": "19:30",
+          "adaptation": "Usar imagem própria e texto explicativo. Sem depoimento inventado."
+        }
+      ]
+    },
+    {
+      "day": 13,
+      "date": "2026-11-07",
+      "weekday": "sábado",
+      "title": "Uma pausa para entender a plataforma",
+      "audience": "Ambos",
+      "status": "rascunho",
+      "channels": [
+        {
+          "channel": "Instagram",
+          "format": "Stories",
+          "time": "10:00",
+          "adaptation": "Seguir roteiro e legenda do calendário original.",
+          "sourceDay": 13
+        }
+      ]
+    },
+    {
+      "day": 14,
+      "date": "2026-11-08",
+      "weekday": "domingo",
+      "title": "Revisar a semana, sem publicação",
+      "audience": "Ambos",
+      "status": "rascunho",
+      "channels": [
+        {
+          "channel": "Instagram",
+          "format": "Revisão interna",
+          "time": "17:00",
+          "adaptation": "Seguir roteiro e legenda do calendário original.",
+          "sourceDay": 14
+        }
+      ]
+    },
+    {
+      "day": 15,
+      "date": "2026-11-09",
+      "weekday": "segunda-feira",
+      "title": "Cadastro individual entra automaticamente na clínica?",
+      "audience": "B2C",
+      "status": "rascunho",
+      "channels": [
+        {
+          "channel": "Instagram",
+          "format": "Reel",
+          "time": "19:30",
+          "adaptation": "Seguir roteiro e legenda do calendário original.",
+          "sourceDay": 15
+        },
+        {
+          "channel": "TikTok",
+          "format": "Vídeo vertical",
+          "time": "19:30",
+          "adaptation": "Abrir com uma dúvida ou tarefa. Usar narração própria, legendas e arquivo limpo. Revisar corte e chamada disponível na conta."
+        },
+        {
+          "channel": "Facebook",
+          "format": "Vídeo original",
+          "time": "19:30",
+          "adaptation": "Acrescentar explicação autossuficiente na descrição; link para a página adequada somente após publicação do domínio."
+        }
+      ]
+    },
+    {
+      "day": 16,
+      "date": "2026-11-10",
+      "weekday": "terça-feira",
+      "title": "O que a demo faz — e quais são seus limites.",
+      "audience": "Ambos",
+      "status": "rascunho",
+      "channels": [
+        {
+          "channel": "Instagram",
+          "format": "Carrossel",
+          "time": "12:15",
+          "adaptation": "Seguir roteiro e legenda do calendário original.",
+          "sourceDay": 16
+        },
+        {
+          "channel": "Facebook",
+          "format": "Sequência de imagens",
+          "time": "12:15",
+          "adaptation": "Adaptar o carrossel com contexto e pergunta específica, sem induzir relatos de saúde em comentários públicos."
+        }
+      ]
+    },
+    {
+      "day": 17,
+      "date": "2026-11-11",
+      "weekday": "quarta-feira",
+      "title": "Qual recurso você quer conhecer melhor?",
+      "audience": "Ambos",
+      "status": "rascunho",
+      "channels": [
+        {
+          "channel": "Instagram",
+          "format": "Stories",
+          "time": "19:30",
+          "adaptation": "Seguir roteiro e legenda do calendário original.",
+          "sourceDay": 17
+        }
+      ]
+    },
+    {
+      "day": 18,
+      "date": "2026-11-12",
+      "weekday": "quinta-feira",
+      "title": "A atividade apareceu na ficha. Veja o caminho.",
+      "audience": "B2B",
+      "status": "rascunho",
+      "channels": [
+        {
+          "channel": "Instagram",
+          "format": "Reel",
+          "time": "12:15",
+          "adaptation": "Seguir roteiro e legenda do calendário original.",
+          "sourceDay": 18
+        },
+        {
+          "channel": "TikTok",
+          "format": "Vídeo vertical",
+          "time": "12:15",
+          "adaptation": "Abrir com uma dúvida ou tarefa. Usar narração própria, legendas e arquivo limpo. Revisar corte e chamada disponível na conta."
+        },
+        {
+          "channel": "Google / site",
+          "format": "Revisão editorial",
+          "time": null,
+          "adaptation": "Revisar: diário alimentar com menos cobrança"
+        }
+      ]
+    },
+    {
+      "day": 19,
+      "date": "2026-11-13",
+      "weekday": "sexta-feira",
+      "title": "Um registro é uma informação. Não uma nota.",
+      "audience": "B2C",
+      "status": "rascunho",
+      "channels": [
+        {
+          "channel": "Instagram",
+          "format": "Foto / arte",
+          "time": "19:30",
+          "adaptation": "Seguir roteiro e legenda do calendário original.",
+          "sourceDay": 19
+        },
+        {
+          "channel": "Facebook",
+          "format": "Foto e texto",
+          "time": "19:30",
+          "adaptation": "Usar imagem própria e texto explicativo. Sem depoimento inventado."
+        }
+      ]
+    },
+    {
+      "day": 20,
+      "date": "2026-11-14",
+      "weekday": "sábado",
+      "title": "Uma pausa para entender a plataforma",
+      "audience": "Ambos",
+      "status": "rascunho",
+      "channels": [
+        {
+          "channel": "Instagram",
+          "format": "Stories",
+          "time": "10:00",
+          "adaptation": "Seguir roteiro e legenda do calendário original.",
+          "sourceDay": 20
+        }
+      ]
+    },
+    {
+      "day": 21,
+      "date": "2026-11-15",
+      "weekday": "domingo",
+      "title": "Revisar a semana, sem publicação",
+      "audience": "Ambos",
+      "status": "rascunho",
+      "channels": [
+        {
+          "channel": "Instagram",
+          "format": "Revisão interna",
+          "time": "17:00",
+          "adaptation": "Seguir roteiro e legenda do calendário original.",
+          "sourceDay": 21
+        }
+      ]
+    },
+    {
+      "day": 22,
+      "date": "2026-11-16",
+      "weekday": "segunda-feira",
+      "title": "Errou um registro? Dá para corrigir.",
+      "audience": "B2C",
+      "status": "rascunho",
+      "channels": [
+        {
+          "channel": "Instagram",
+          "format": "Reel",
+          "time": "19:30",
+          "adaptation": "Seguir roteiro e legenda do calendário original.",
+          "sourceDay": 22
+        },
+        {
+          "channel": "TikTok",
+          "format": "Vídeo vertical",
+          "time": "19:30",
+          "adaptation": "Abrir com uma dúvida ou tarefa. Usar narração própria, legendas e arquivo limpo. Revisar corte e chamada disponível na conta."
+        },
+        {
+          "channel": "Facebook",
+          "format": "Vídeo original",
+          "time": "19:30",
+          "adaptation": "Acrescentar explicação autossuficiente na descrição; link para a página adequada somente após publicação do domínio."
+        }
+      ]
+    },
+    {
+      "day": 23,
+      "date": "2026-11-17",
+      "weekday": "terça-feira",
+      "title": "Como ler o resumo de movimento sem tirar conclusões erradas.",
+      "audience": "B2B",
+      "status": "rascunho",
+      "channels": [
+        {
+          "channel": "Instagram",
+          "format": "Carrossel",
+          "time": "12:15",
+          "adaptation": "Seguir roteiro e legenda do calendário original.",
+          "sourceDay": 23
+        },
+        {
+          "channel": "Facebook",
+          "format": "Sequência de imagens",
+          "time": "12:15",
+          "adaptation": "Adaptar o carrossel com contexto e pergunta específica, sem induzir relatos de saúde em comentários públicos."
+        }
+      ]
+    },
+    {
+      "day": 24,
+      "date": "2026-11-18",
+      "weekday": "quarta-feira",
+      "title": "Qual recurso você quer conhecer melhor?",
+      "audience": "Ambos",
+      "status": "rascunho",
+      "channels": [
+        {
+          "channel": "Instagram",
+          "format": "Stories",
+          "time": "19:30",
+          "adaptation": "Seguir roteiro e legenda do calendário original.",
+          "sourceDay": 24
+        }
+      ]
+    },
+    {
+      "day": 25,
+      "date": "2026-11-19",
+      "weekday": "quinta-feira",
+      "title": "A dose muda o plano automaticamente?",
+      "audience": "Ambos",
+      "status": "rascunho",
+      "channels": [
+        {
+          "channel": "Instagram",
+          "format": "Reel",
+          "time": "12:15",
+          "adaptation": "Seguir roteiro e legenda do calendário original.",
+          "sourceDay": 25
+        },
+        {
+          "channel": "TikTok",
+          "format": "Vídeo vertical",
+          "time": "12:15",
+          "adaptation": "Abrir com uma dúvida ou tarefa. Usar narração própria, legendas e arquivo limpo. Revisar corte e chamada disponível na conta."
+        },
+        {
+          "channel": "Google / site",
+          "format": "Revisão editorial",
+          "time": null,
+          "adaptation": "Revisar: registro de medidas e movimento"
+        }
+      ]
+    },
+    {
+      "day": 26,
+      "date": "2026-11-20",
+      "weekday": "sexta-feira",
+      "title": "Mais contexto para a próxima conversa.",
+      "audience": "B2B",
+      "status": "rascunho",
+      "channels": [
+        {
+          "channel": "Instagram",
+          "format": "Foto / arte",
+          "time": "19:30",
+          "adaptation": "Seguir roteiro e legenda do calendário original.",
+          "sourceDay": 26
+        },
+        {
+          "channel": "Facebook",
+          "format": "Foto e texto",
+          "time": "19:30",
+          "adaptation": "Usar imagem própria e texto explicativo. Sem depoimento inventado."
+        }
+      ]
+    },
+    {
+      "day": 27,
+      "date": "2026-11-21",
+      "weekday": "sábado",
+      "title": "Uma pausa para entender a plataforma",
+      "audience": "Ambos",
+      "status": "rascunho",
+      "channels": [
+        {
+          "channel": "Instagram",
+          "format": "Stories",
+          "time": "10:00",
+          "adaptation": "Seguir roteiro e legenda do calendário original.",
+          "sourceDay": 27
+        }
+      ]
+    },
+    {
+      "day": 28,
+      "date": "2026-11-22",
+      "weekday": "domingo",
+      "title": "Revisar a semana, sem publicação",
+      "audience": "Ambos",
+      "status": "rascunho",
+      "channels": [
+        {
+          "channel": "Instagram",
+          "format": "Revisão interna",
+          "time": "17:00",
+          "adaptation": "Seguir roteiro e legenda do calendário original.",
+          "sourceDay": 28
+        }
+      ]
+    },
+    {
+      "day": 29,
+      "date": "2026-11-23",
+      "weekday": "segunda-feira",
+      "title": "Uma volta pela Tirzelife em 30 segundos.",
+      "audience": "Ambos",
+      "status": "rascunho",
+      "channels": [
+        {
+          "channel": "Instagram",
+          "format": "Reel",
+          "time": "19:30",
+          "adaptation": "Seguir roteiro e legenda do calendário original.",
+          "sourceDay": 29
+        },
+        {
+          "channel": "TikTok",
+          "format": "Vídeo vertical",
+          "time": "19:30",
+          "adaptation": "Abrir com uma dúvida ou tarefa. Usar narração própria, legendas e arquivo limpo. Revisar corte e chamada disponível na conta."
+        },
+        {
+          "channel": "Facebook",
+          "format": "Vídeo original",
+          "time": "19:30",
+          "adaptation": "Acrescentar explicação autossuficiente na descrição; link para a página adequada somente após publicação do domínio."
+        }
+      ]
+    },
+    {
+      "day": 30,
+      "date": "2026-11-24",
+      "weekday": "terça-feira",
+      "title": "Qual caminho faz sentido para você?",
+      "audience": "Ambos",
+      "status": "rascunho",
+      "channels": [
+        {
+          "channel": "Instagram",
+          "format": "Carrossel",
+          "time": "12:15",
+          "adaptation": "Seguir roteiro e legenda do calendário original.",
+          "sourceDay": 30
+        },
+        {
+          "channel": "Facebook",
+          "format": "Sequência de imagens",
+          "time": "12:15",
+          "adaptation": "Adaptar o carrossel com contexto e pergunta específica, sem induzir relatos de saúde em comentários públicos."
+        }
+      ]
+    }
+  ]
+}

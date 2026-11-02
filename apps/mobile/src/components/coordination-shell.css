@@ -1,0 +1,45 @@
+/* Shared shell adjustments for the integrated patient and clinic navigation. */
+.tl-app .tl-main,.tl-app .cl-main,.tl-app .cl-detail{min-width:0}
+.tl-app .tl-main>.co-panel{margin-bottom:22px}
+.tl-app .tl-sidebar{overflow-y:auto;overscroll-behavior-y:contain;scrollbar-width:thin;scrollbar-color:var(--line) transparent}
+.tl-app .tl-sidebar>*,.tl-app .tl-sidebar nav{flex-shrink:0}
+.tl-app .tl-sidebar nav button{min-width:0;overflow-wrap:anywhere}
+.tl-app .tl-sidebar nav button svg{flex-shrink:0}
+.tl-app .tl-sidebar-bottom{padding-bottom:8px}
+.tl-app .tl-treatment-latest{margin:22px 0 18px;padding:18px;background:var(--soft);border:1px solid var(--line);border-radius:12px;min-width:0}
+.tl-app .tl-treatment-latest>span{display:block;font-size:11px;letter-spacing:.04em;margin-bottom:9px}
+.tl-app .tl-treatment-latest>strong{display:block;font-size:19px;line-height:1.35;overflow-wrap:anywhere}
+.tl-app .tl-treatment-latest>p{font-size:13px;line-height:1.7;white-space:pre-wrap;overflow-wrap:anywhere;margin-top:9px}
+.tl-app .tl-cycle-bottom>div{display:grid;gap:5px;min-width:0}
+.tl-app .tl-cycle-bottom .tl-muted{font-size:11px}
+.tl-app .tl-cycle .tl-fine{font-size:11px;line-height:1.7}
+.tl-app .cl-detail{overflow-x:hidden}
+.tl-app .cl-detail-tabs{display:flex;flex-wrap:nowrap;gap:8px;overflow-x:auto;overflow-y:hidden;max-width:100%;min-width:0;scrollbar-width:thin;scrollbar-color:var(--line) transparent;overscroll-behavior-x:contain;scroll-padding-inline:6px;padding:4px 3px 7px;margin:22px 0}
+.tl-app .cl-detail-tabs>button{flex:0 0 auto;min-width:72px;min-height:48px;padding:12px 9px;white-space:nowrap;font-size:12px}
+.tl-app .cl-detail-tabs>button[aria-selected=true]{font-weight:700;background:var(--soft);border-radius:8px 8px 0 0}
+.tl-app .cl-detail-tabs>button:focus-visible{outline-offset:-3px}
+.tl-app .cl-detail .co-plan-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,285px),1fr))}
+.tl-app .cl-detail .co-heading{gap:12px}
+.tl-app .cl-detail .co-heading h2{font-size:clamp(24px,3vw,30px)}
+.tl-app .cl-detail .co-section-heading>.co-actions{max-width:100%}
+.tl-app .cl-detail .co-panel{max-width:100%;min-width:0}
+@media(max-width:700px){
+ .tl-app>.tl-mobile-nav,.tl-app.cl-app>.tl-mobile-nav{display:grid;grid-auto-flow:column;grid-template-columns:none;grid-auto-columns:minmax(56px,1fr);align-items:stretch;justify-content:start;column-gap:4px;width:auto;max-width:100%;left:0;right:0;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:var(--line) transparent;scroll-padding-inline:6px;padding:8px 6px calc(9px + env(safe-area-inset-bottom));min-height:76px;box-sizing:border-box;-webkit-overflow-scrolling:touch}
+ .tl-app.cl-app>.tl-mobile-nav{grid-auto-columns:minmax(48px,1fr)}
+ .tl-app>.tl-mobile-nav>button{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:56px;width:100%;min-height:48px;padding:5px 2px;gap:5px;scroll-margin-inline:6px;border-radius:9px}
+ .tl-app.cl-app>.tl-mobile-nav>button{min-width:48px}
+ .tl-app>.tl-mobile-nav>button>svg{flex-shrink:0}
+ .tl-app>.tl-mobile-nav>button>span{font-size:9.5px;line-height:1.3;max-width:100%;white-space:nowrap;letter-spacing:-.015em}
+ .tl-app.cl-app>.tl-mobile-nav>button>span{font-size:9.5px}
+ .tl-app>.tl-mobile-nav>button:focus-visible{outline-offset:-3px}
+ .tl-app .tl-main,.tl-app .cl-main{padding-bottom:calc(125px + env(safe-area-inset-bottom))}
+ .tl-app .cl-detail.care-wide{max-width:100vw!important;width:100vw!important;padding:18px 14px}
+ .tl-app .cl-detail-tabs>button{min-width:68px;padding:12px 8px}
+ .tl-app .tl-treatment-latest{padding:15px;margin-top:18px}
+ .tl-app .tl-treatment-latest>strong{font-size:18px}
+ .tl-app .cl-detail .co-card{padding:16px}
+ .tl-app .tl-toast{max-width:calc(100vw - 28px);overflow-wrap:anywhere}
+}
+@media(prefers-reduced-motion:reduce){.tl-app .tl-mobile-nav,.tl-app .cl-detail-tabs{scroll-behavior:auto}}
+
+.tl-app .cl-detail-header .tl-icon-button{min-width:44px;min-height:44px}

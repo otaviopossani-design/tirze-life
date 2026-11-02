@@ -1,0 +1,18 @@
+{
+  "nutrition.jpg": {
+    "width": 1210,
+    "height": 800
+  },
+  "movement.jpg": {
+    "width": 1210,
+    "height": 800
+  },
+  "clinic.jpg": {
+    "width": 1202,
+    "height": 800
+  },
+  "social-card.png": {
+    "width": 1200,
+    "height": 630
+  }
+}

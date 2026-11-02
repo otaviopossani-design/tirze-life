@@ -1,0 +1,16 @@
+{
+  "checkedAt": "2026-10-22T21:14:50.568Z",
+  "pages": 9,
+  "uniqueTitles": 9,
+  "uniqueDescriptions": 9,
+  "imagesChecked": 24,
+  "internalLinksChecked": 11,
+  "viewports": [
+    1440,
+    390,
+    320
+  ],
+  "javascriptErrors": 0,
+  "status": "passed",
+  "note": "Local browser and HTML checks; not Google indexing, field Core Web Vitals or a Lighthouse score."
+}

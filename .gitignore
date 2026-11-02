@@ -1,0 +1,28 @@
+# Dependencies and virtual environments
+node_modules/
+**/node_modules/
+.expo/
+**/.expo/
+dist/
+**/dist/
+.venv/
+**/.venv/
+__pycache__/
+**/__pycache__/
+.pytest_cache/
+**/.pytest_cache/
+*.pyc
+
+# Environment and secrets
+.env
+.env.local
+*.env
+*.log
+
+# Local previews and caches
+.local/
+**/.local/
+.test-output/
+apps/landing/dist/
+apps/landing/.test-output/
+tirze-life-contexto-completo.txt
