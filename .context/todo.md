@@ -1,7 +1,8 @@
 # Backlog & Tarefas: Monjaro codex
 
 ## Em Andamento / Prioridades
-- [ ] Conectar chaves de API Supabase (URL + Anon Key) e deploy na Vercel quando o usuário retornar do almoço
+- [ ] Conectar chaves de API Supabase (URL + Anon Key) se for persistir em nuvem além do LocalStorage
+- [x] [2026-11-02] Deploy Vercel: Configuração nativa de exportação estática (`output: static` no Expo Router) com geração de `clinica.html`, resolvendo o erro 404 da sub-rota `/clinica`.
 
 ## Backlog Geral
 - [ ] Implementar exportação de relatório médico em PDF padronizado para WhatsApp
