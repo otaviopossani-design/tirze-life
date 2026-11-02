@@ -205,7 +205,7 @@ export default function DoseScienceGuide() {
   }
 
   return (
-    <section className="tl-card dose-science-card" style={{ marginTop: '1.25rem' }}>
+    <section className="tl-card dose-science-card" style={{ marginTop: '0.75rem', padding: '12px 14px' }}>
       <div className="tl-card-heading">
         <span className="tl-kicker">
           <Icon name="activity" size={16} /> PROTOCOLOS &amp; BASE CIENTÍFICA

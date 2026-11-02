@@ -12,7 +12,9 @@
 - **Nutrição Reativa & Algoritmo de Doses (`reactive-nutrition.ts` e `NextMealReactiveCard.tsx`):** Sugere próxima refeição adaptada a sintomas reais (alimentos frios para combater náusea olfativa por cheiros fortes e porções compactas para evitar regurgitação mecânica em esforço). Avalia progressão de dose com contraindicação de aumento para 5,0 mg em caso de sensibilidade gástrica.
 - **Base Científica & Protocolos (`DoseScienceGuide.tsx`):** Links diretos para NEJM, The Lancet e consensos internacionais, cobrindo Tirzepatida, Retatrutida, CagriSema e Glow/GHK-Cu com Disclaimer Médico obrigatório.
 - **Calculadora Visual de Seringas & Frascos Manipulados (`SyringeCalculator.tsx`):** Conversão interativa de concentração mg/mL para unidades internacionais (100 UI, 50 UI, 30 UI) com régua gráfica de êmbolo.
-- **Exportação para Consulta Médica em 1 Toque (`DoctorReportExport.tsx`):** Geração de relatório para WhatsApp do médico e impressão/PDF com tolerância, adesão e histórico.
+- **Exportação para Consulta Médica em 1 Toque (`DoctorReportExport.tsx`):** Geração de relatório para WhatsApp do médico e impressão/PDF com cálculo automático do ciclo de semanas decorridas, data prevista para a próxima dose (+7 dias) com contador regressivo e histórico semanal consolidado.
+- **Compactação e Densidade de UI em Todos os Menus:** Menus laterais delicados (altura de 36px, padding 7px 10px), cards compactados (paddings de 10px a 14px) e cabeçalhos proporcionais em todas as 8 visões do sistema.
+- **Skill Prompt Engineer Pro 2.0:** Atualizada com o padrão executivo de 11 seções, segurança RLS estrita por organização/projeto, 10 critérios de aceite e entrega modular em 7 fases sem placeholders.
 - **Mapa Fisiológico do Ciclo Semanal (`WeeklyBioCycleMap.tsx`):** Mapeamento dinâmico D+0 a D+7 com fisiologia, psicologia anticulpa e nutrição por fase.
 - **Benchmark Competitivo no App (`MarketComparisonCard.tsx`):** Comparador interativo de engenharia de produto frente a Shotsy, Noom e Ro.
 - **Painel da Clínica Conectado (`ClinicDashboard.web.tsx` em `/clinica`):** Filtro por medicação, histórico compartilhado e gestão de cardápios.

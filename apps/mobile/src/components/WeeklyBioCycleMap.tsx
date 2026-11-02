@@ -8,7 +8,6 @@ interface CyclePhase {
   badge: string;
   badgeColor: string;
   physiology: string;
-  actionGuidance: string;
   psychologyNoGuilt: string;
   nutritionTip: string;
 }
@@ -19,44 +18,40 @@ const PHASES: CyclePhase[] = [
     days: 'D+0 a D+2',
     name: 'Absorção e Pico Plasmático',
     badge: 'Pico Hormonal',
-    badgeColor: '#e11d48',
-    physiology: 'A concentração plasmática atinge o pico entre 24h e 48h. O esvaziamento gástrico fica no ponto mais lento da semana.',
-    actionGuidance: 'Beba 2,5L a 3,0L de água em pequenos goles com eletrólitos. Mantenha postura ereta por 2h após comer.',
-    psychologyNoGuilt: 'Se sentir aversão a comidas pesadas ou cheiro de refogado, não force. Seu corpo está calibrando os receptores.',
-    nutritionTip: 'Comidas frias ou amenas (iogurte grego, ovos mexidos mornos, shake proteico). Evite vapores quentes e gordura.',
+    badgeColor: '#f43f5e',
+    physiology: 'Pico em 24h a 48h. Esvaziamento gástrico no ponto mais lento.',
+    psychologyNoGuilt: 'Se sentir aversão a comidas pesadas ou cheiros, não force. É o pico de receptores.',
+    nutritionTip: 'Comidas frias/amenas (iogurte grego, ovos mornos, shakes). Evite vapores quentes.',
   },
   {
     phaseNumber: 2,
     days: 'D+3 a D+4',
-    name: 'Platô Terapêutico & Janela Muscular',
+    name: 'Platô Terapêutico & Músculo',
     badge: 'Estabilidade',
-    badgeColor: '#059669',
-    physiology: 'Concentração em equilíbrio ideal. Náuseas zeradas ou mínimas com saciedade controlada e mente tranquila.',
-    actionGuidance: 'Esta é a sua Janela de Ouro do Músculo (Muscle Defense). Priorize treinos de força para proteger a taxa metabólica basal.',
-    psychologyNoGuilt: 'Você está no comando. Aproveite a clareza mental e a ausência do ruído de comida ("food noise").',
-    nutritionTip: 'Bata 1,6g a 2,0g de proteína por kg de peso corporal (peixes, frango, whey, queijo cottage).',
+    badgeColor: '#10b981',
+    physiology: 'Concentração em equilíbrio ideal. Náuseas mínimas e mente tranquila.',
+    psychologyNoGuilt: 'Aproveite a clareza mental e a ausência de "food noise". Você está no controle.',
+    nutritionTip: 'Janela de Ouro do Músculo: bata 1,6g a 2,0g de proteína por kg e treine força.',
   },
   {
     phaseNumber: 3,
     days: 'D+5 a D+6',
-    name: 'Decaimento Biológico e Retorno da Fome',
-    badge: 'Atenção Anticulpa',
-    badgeColor: '#d97706',
-    physiology: 'A meia-vida de 120h faz o nível do medicamento cair cerca de 50%. Os hormônios da fome (grelina) voltam a emitir sinais.',
-    actionGuidance: 'Aumente o volume das refeições com alimentos de baixa densidade calórica e muitas fibras solúveis.',
-    psychologyNoGuilt: 'ZERO CULPA: O remédio não "parou de funcionar" e você não "perdeu o foco". É pura farmacocinética natural.',
-    nutritionTip: 'Saladas crocantes, vegetais cozidos no vapor, aveia, semente de chia e frutas com casca.',
+    name: 'Decaimento & Retorno da Fome',
+    badge: 'Anticulpa',
+    badgeColor: '#f59e0b',
+    physiology: 'Meia-vida de 120h: nível cai ~50%. Os sinais naturais de fome retornam.',
+    psychologyNoGuilt: 'ZERO CULPA: O remédio não parou de funcionar. É pura farmacocinética natural.',
+    nutritionTip: 'Aumente o volume com fibras solúveis (aveia, maçã, chia, folhas crocantes).',
   },
   {
     phaseNumber: 4,
     days: 'D+7',
     name: 'Renovação do Ciclo & Rotação',
     badge: 'Nova Aplicação',
-    badgeColor: '#2563eb',
-    physiology: 'Momento de reaplicação para reiniciar o ciclo de 120h sem deixar a curva basal cair a zero.',
-    actionGuidance: 'Alterne o local de aplicação: se na semana passada foi no abdômen esquerdo, hoje use o abdômen direito ou a coxa.',
-    psychologyNoGuilt: 'Celebre cada pequena vitória da semana anterior: roupas mais confortáveis, mais disposição e controle.',
-    nutritionTip: 'Refeição leve antes da aplicação. Tenha água fresca por perto.',
+    badgeColor: '#3b82f6',
+    physiology: 'Ponto de reaplicação para manter a curva basal sem oscilação.',
+    psychologyNoGuilt: 'Celebre cada pequena vitória da semana anterior.',
+    nutritionTip: 'Refeição leve antes da injeção. Alterne o sítio (abdômen, coxa ou braço).',
   },
 ];
 
@@ -65,77 +60,92 @@ export default function WeeklyBioCycleMap() {
   const current = PHASES.find((p) => p.phaseNumber === selectedPhase) ?? PHASES[0]!;
 
   return (
-    <section className="tl-card" style={{ borderColor: 'var(--brand-teal, #0d9488)', borderTopWidth: 3 }}>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8, marginBottom: 10 }}>
-        <span className="tl-kicker" style={{ color: '#0d9488', display: 'flex', alignItems: 'center', gap: 5 }}>
-          <Icon name="activity" size={15} /> MAPA FARMACOCINÉTICO DE 7 DIAS
-        </span>
-        <span style={{ fontSize: '0.72rem', background: 'rgba(13, 148, 136, 0.1)', color: '#0d9488', padding: '3px 8px', borderRadius: 999, fontWeight: 600 }}>
-          Ciclo Biológico t½ 120h
+    <section
+      className="tl-card"
+      style={{
+        borderTop: '3px solid var(--accent, #0d9488)',
+        borderRadius: '10px',
+        padding: '12px 14px',
+      }}
+    >
+      {/* Header */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 6, marginBottom: 8 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+          <span style={{ color: 'var(--accent, #0d9488)', display: 'flex', alignItems: 'center' }}>
+            <Icon name="activity" size={15} />
+          </span>
+          <span style={{ fontSize: '0.74rem', fontWeight: 800, color: 'var(--accent, #0d9488)', letterSpacing: '0.4px', textTransform: 'uppercase' }}>
+            Mapa Semanal t½ 120h
+          </span>
+        </div>
+        <span style={{ fontSize: '0.7rem', background: 'var(--soft, #eef2e6)', color: 'var(--accent, #0d9488)', padding: '2px 8px', borderRadius: 999, fontWeight: 700 }}>
+          7 Dias
         </span>
       </div>
 
-      <h2 style={{ fontSize: '1.2rem', marginBottom: 6 }}>O Que Acontece no Seu Corpo Dia a Dia</h2>
-      <p style={{ fontSize: '0.86rem', color: 'var(--ink-secondary)', marginBottom: 14 }}>
-        A tirzepatida e os agonistas GLP-1/GIP têm comportamento semanal previsível. Entenda a biologia e viva sem culpa:
+      <p style={{ fontSize: '0.82rem', color: 'var(--muted, #7b887a)', margin: '0 0 12px 0', lineHeight: 1.4 }}>
+        O comportamento fisiológico do seu corpo ao longo da semana:
       </p>
 
-      {/* Phase Selector Tabs */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 6, marginBottom: 14 }}>
-        {PHASES.map((p) => (
-          <button
-            key={p.phaseNumber}
-            type="button"
-            onClick={() => setSelectedPhase(p.phaseNumber)}
-            style={{
-              padding: '8px 4px',
-              borderRadius: 8,
-              border: selectedPhase === p.phaseNumber ? `2px solid ${p.badgeColor}` : '1px solid #cbd5e1',
-              background: selectedPhase === p.phaseNumber ? `${p.badgeColor}15` : 'transparent',
-              cursor: 'pointer',
-              textAlign: 'center',
-            }}
-          >
-            <div style={{ fontSize: '0.75rem', fontWeight: 800, color: selectedPhase === p.phaseNumber ? p.badgeColor : '#64748b' }}>
-              {p.days}
-            </div>
-            <div style={{ fontSize: '0.68rem', color: '#475569', marginTop: 2, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-              Fase {p.phaseNumber}
-            </div>
-          </button>
-        ))}
+      {/* 4 Tabs - Compact */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 6, marginBottom: 12 }}>
+        {PHASES.map((p) => {
+          const isSel = selectedPhase === p.phaseNumber;
+          return (
+            <button
+              key={p.phaseNumber}
+              type="button"
+              onClick={() => setSelectedPhase(p.phaseNumber)}
+              style={{
+                padding: '6px 2px',
+                borderRadius: 6,
+                border: isSel ? `1.5px solid ${p.badgeColor}` : '1px solid var(--line, #e4e8dc)',
+                background: isSel ? `${p.badgeColor}20` : 'transparent',
+                cursor: 'pointer',
+                textAlign: 'center',
+              }}
+            >
+              <div style={{ fontSize: '0.72rem', fontWeight: 800, color: isSel ? p.badgeColor : 'var(--text, #284c43)' }}>
+                {p.days}
+              </div>
+              <div style={{ fontSize: '0.62rem', color: 'var(--muted, #7b887a)', marginTop: 1 }}>
+                Fase {p.phaseNumber}
+              </div>
+            </button>
+          );
+        })}
       </div>
 
-      {/* Selected Phase Detail Card */}
-      <div style={{ background: '#f8fafc', borderRadius: 10, padding: 14, border: '1px solid #e2e8f0' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
-          <h3 style={{ fontSize: '1.05rem', margin: 0, color: '#1e293b' }}>
+      {/* Selected Phase Detail - Compact */}
+      <div style={{ background: 'var(--card, #fffefa)', borderRadius: 8, padding: '12px 10px', border: '1px solid var(--line, #e4e8dc)' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 6, marginBottom: 6 }}>
+          <strong style={{ fontSize: '0.9rem', color: 'var(--text, #284c43)', fontWeight: 700 }}>
             {current.name}
-          </h3>
-          <span style={{ fontSize: '0.72rem', fontWeight: 700, padding: '3px 8px', borderRadius: 6, background: current.badgeColor, color: '#ffffff' }}>
+          </strong>
+          <span style={{ fontSize: '0.65rem', fontWeight: 800, padding: '2px 6px', borderRadius: 4, background: current.badgeColor, color: '#ffffff' }}>
             {current.badge}
           </span>
         </div>
 
-        <p style={{ fontSize: '0.84rem', color: '#334155', marginBottom: 12, lineHeight: 1.45 }}>
-          🧬 <strong>Fisiologia do momento:</strong> {current.physiology}
+        <p style={{ fontSize: '0.78rem', color: 'var(--text, #284c43)', margin: '0 0 8px 0', lineHeight: 1.4 }}>
+          🧬 <strong>Fisiologia:</strong> {current.physiology}
         </p>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 10 }}>
-          <div style={{ background: '#ffffff', padding: 10, borderRadius: 8, border: '1px solid #e2e8f0' }}>
-            <strong style={{ fontSize: '0.78rem', color: '#0d9488', display: 'flex', alignItems: 'center', gap: 4, marginBottom: 4 }}>
-              <Icon name="heart" size={14} /> Recomendação de Nutrição:
-            </strong>
-            <p style={{ fontSize: '0.8rem', color: '#475569', margin: 0, lineHeight: 1.4 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 8 }}>
+          <div style={{ background: 'var(--soft, #eef2e6)', padding: '8px 10px', borderRadius: 6 }}>
+            <span style={{ fontSize: '0.7rem', color: 'var(--accent, #0d9488)', fontWeight: 800, display: 'block', marginBottom: 2 }}>
+              🥗 Nutrição Recomendada
+            </span>
+            <p style={{ fontSize: '0.74rem', color: 'var(--text, #284c43)', margin: 0, lineHeight: 1.35 }}>
               {current.nutritionTip}
             </p>
           </div>
 
-          <div style={{ background: '#fffbeb', padding: 10, borderRadius: 8, border: '1px solid #fef3c7' }}>
-            <strong style={{ fontSize: '0.78rem', color: '#b45309', display: 'flex', alignItems: 'center', gap: 4, marginBottom: 4 }}>
-              <Icon name="leaf" size={14} /> Psicologia Anticulpa:
-            </strong>
-            <p style={{ fontSize: '0.8rem', color: '#78350f', margin: 0, lineHeight: 1.4 }}>
+          <div style={{ background: 'var(--life, #f4e8dd)', padding: '8px 10px', borderRadius: 6 }}>
+            <span style={{ fontSize: '0.7rem', color: 'var(--life-text, #825746)', fontWeight: 800, display: 'block', marginBottom: 2 }}>
+              🌿 Psicologia Sem Culpa
+            </span>
+            <p style={{ fontSize: '0.74rem', color: 'var(--life-text, #825746)', margin: 0, lineHeight: 1.35 }}>
               {current.psychologyNoGuilt}
             </p>
           </div>

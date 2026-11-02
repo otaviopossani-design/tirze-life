@@ -93,9 +93,9 @@ export default function SyringeCalculator() {
       style={{
         background: 'var(--card, #ffffff)',
         border: '1px solid var(--line, #e2e8f0)',
-        borderRadius: '16px',
-        padding: '18px 16px',
-        boxShadow: '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+        borderRadius: '12px',
+        padding: '12px 14px',
+        boxShadow: '0 2px 12px -2px rgba(0, 0, 0, 0.04)',
         position: 'relative',
         overflow: 'hidden',
       }}
