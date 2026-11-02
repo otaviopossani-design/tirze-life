@@ -11,35 +11,35 @@ interface DilutionPreset {
 
 const COMMON_PRESETS: DilutionPreset[] = [
   {
-    name: 'Tirzepatida 10 mg / 2 mL (Padrão)',
+    name: 'Tirzepatida 10mg / 2mL',
     medication: 'Tirzepatida',
     totalMg: 10,
     totalMl: 2.0,
     typicalDoses: [1.25, 2.5, 3.75, 5.0],
   },
   {
-    name: 'Tirzepatida 20 mg / 2 mL (Concentrado)',
+    name: 'Tirzepatida 20mg / 2mL',
     medication: 'Tirzepatida',
     totalMg: 20,
     totalMl: 2.0,
     typicalDoses: [2.5, 5.0, 7.5, 10.0],
   },
   {
-    name: 'Tirzepatida 30 mg / 3 mL',
+    name: 'Tirzepatida 30mg / 3mL',
     medication: 'Tirzepatida',
     totalMg: 30,
     totalMl: 3.0,
     typicalDoses: [2.5, 5.0, 7.5, 10.0, 15.0],
   },
   {
-    name: 'Retatrutida 10 mg / 2 mL (Pesquisa)',
+    name: 'Retatrutida 10mg / 2mL',
     medication: 'Retatrutida',
     totalMg: 10,
     totalMl: 2.0,
     typicalDoses: [1.0, 2.0, 4.0],
   },
   {
-    name: 'GHK-Cu / Glow 50 mg / 2 mL',
+    name: 'GHK-Cu Glow 50mg / 2mL',
     medication: 'GHK-Cu',
     totalMg: 50,
     totalMl: 2.0,
@@ -76,10 +76,10 @@ export default function SyringeCalculator() {
   // Scale max UI by syringe type
   const maxUi = syringeType === '100ui' ? 100 : syringeType === '50ui' ? 50 : 30;
 
-  // Syringe SVG scale dimensions
-  const barrelStartX = 115;
+  // Syringe SVG scale dimensions (delicate, slim medical aesthetic)
+  const barrelStartX = 112;
   const barrelEndX = 540;
-  const scaleLength = barrelEndX - barrelStartX; // 425px
+  const scaleLength = barrelEndX - barrelStartX; // 428px
   const clampedUnits = Math.min(maxUi, Math.max(0, units100Ui));
   const liquidTargetX = barrelStartX + (clampedUnits / maxUi) * scaleLength;
 
@@ -91,37 +91,75 @@ export default function SyringeCalculator() {
     <section
       className="tl-card"
       style={{
-        background: '#0b1329',
-        border: '2px solid #1e293b',
-        borderTop: '5px solid #0d9488',
-        color: '#f8fafc',
+        background: 'var(--card, #ffffff)',
+        border: '1px solid var(--line, #e2e8f0)',
         borderRadius: '16px',
-        padding: '24px 20px',
+        padding: '18px 16px',
+        boxShadow: '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+        position: 'relative',
+        overflow: 'hidden',
       }}
     >
-      {/* Header Tag */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8, marginBottom: 14 }}>
-        <span style={{ color: '#2dd4bf', display: 'flex', alignItems: 'center', gap: 6, fontWeight: 800, fontSize: '0.85rem', letterSpacing: '0.5px' }}>
-          <Icon name="activity" size={17} /> EXCLUSIVIDADE TIRZE-LIFE · SEGURANÇA MÁXIMA
-        </span>
-        <span style={{ fontSize: '0.8rem', background: 'rgba(13, 148, 136, 0.25)', color: '#2dd4bf', border: '1px solid #0d9488', padding: '4px 12px', borderRadius: 999, fontWeight: 700 }}>
-          Diluição &amp; Seringas
+      {/* Delicate Accent Top Line */}
+      <div
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 16,
+          right: 16,
+          height: '2px',
+          background: 'linear-gradient(90deg, transparent 0%, var(--accent, #0d9488) 50%, transparent 100%)',
+          opacity: 0.8,
+        }}
+      />
+
+      {/* Header - Soft, Elegant */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8, marginBottom: 10 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+          <span style={{ color: 'var(--accent, #0d9488)', display: 'flex', opacity: 0.9 }}>
+            <Icon name="activity" size={15} />
+          </span>
+          <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--accent, #0d9488)', letterSpacing: '0.6px', textTransform: 'uppercase' }}>
+            Guia Visual de Diluição
+          </span>
+        </div>
+        <span
+          style={{
+            fontSize: '0.7rem',
+            background: 'var(--soft, rgba(13, 148, 136, 0.08))',
+            color: 'var(--accent, #0d9488)',
+            border: '1px solid rgba(13, 148, 136, 0.15)',
+            padding: '2px 8px',
+            borderRadius: 999,
+            fontWeight: 600,
+          }}
+        >
+          {concentrationMgPerMl.toFixed(1)} mg/mL
         </span>
       </div>
 
-      <h2 style={{ fontSize: '1.45rem', marginBottom: 8, color: '#ffffff', fontWeight: 800 }}>
-        Calculadora Visual de Seringa &amp; Manipulados
+      <h2 style={{ fontSize: '1.15rem', fontWeight: 600, color: 'var(--text)', margin: '0 0 4px 0', letterSpacing: '-0.3px' }}>
+        Calculadora de Seringa
       </h2>
-      <p style={{ fontSize: '0.95rem', color: '#94a3b8', marginBottom: 20, lineHeight: 1.5 }}>
-        Evite o erro nº 1 de quem usa frasco-ampola ou manipulado: veja na réplica gráfica da seringa exatamente até onde puxar o êmbolo.
+      <p style={{ fontSize: '0.8rem', color: 'var(--muted)', margin: '0 0 14px 0', lineHeight: 1.45 }}>
+        Conferência da marcação exata na seringa para seu frasco de aplicação.
       </p>
 
-      {/* Preset selector buttons */}
-      <div style={{ marginBottom: 22 }}>
-        <label style={{ fontSize: '0.82rem', fontWeight: 800, letterSpacing: '0.8px', textTransform: 'uppercase', color: '#cbd5e1', display: 'block', marginBottom: 10 }}>
-          FRASCOS MAIS COMUNS NO BRASIL
-        </label>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+      {/* Preset Chips - Delicate Pill Carousel */}
+      <div style={{ marginBottom: 14 }}>
+        <div style={{ fontSize: '0.68rem', fontWeight: 600, color: 'var(--muted)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: 6 }}>
+          Frasco em uso
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            gap: 6,
+            overflowX: 'auto',
+            paddingBottom: 4,
+            WebkitOverflowScrolling: 'touch',
+            scrollbarWidth: 'none',
+          }}
+        >
           {COMMON_PRESETS.map((p, idx) => {
             const isSelected = selectedPresetIndex === idx;
             return (
@@ -130,15 +168,17 @@ export default function SyringeCalculator() {
                 type="button"
                 onClick={() => handlePresetSelect(idx)}
                 style={{
-                  fontSize: '0.85rem',
-                  padding: '8px 14px',
-                  borderRadius: 8,
-                  border: isSelected ? '2px solid #2dd4bf' : '1.5px solid #334155',
-                  background: isSelected ? 'rgba(13, 148, 136, 0.35)' : '#0f172a',
-                  color: isSelected ? '#5eead4' : '#cbd5e1',
-                  fontWeight: isSelected ? 800 : 600,
+                  flexShrink: 0,
+                  fontSize: '0.74rem',
+                  padding: '5px 11px',
+                  borderRadius: 999,
+                  border: isSelected ? '1px solid var(--accent, #0d9488)' : '1px solid var(--line, #e2e8f0)',
+                  background: isSelected ? 'var(--soft, rgba(13, 148, 136, 0.12))' : 'transparent',
+                  color: isSelected ? 'var(--accent, #0d9488)' : 'var(--muted)',
+                  fontWeight: isSelected ? 600 : 500,
                   cursor: 'pointer',
                   transition: 'all 0.15s ease',
+                  whiteSpace: 'nowrap',
                 }}
               >
                 {p.name}
@@ -148,147 +188,123 @@ export default function SyringeCalculator() {
         </div>
       </div>
 
-      {/* 3 QUADROS COM ALTO CONTRASTE ABSOLUTO (SEM TEXTO BRANCO EM FUNDO BRANCO) */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: 14, marginBottom: 22 }}>
-        {/* QUADRO 1: TOTAL NO FRASCO */}
+      {/* 3 Delicate Metric Cards (Total, Volume, Dose) */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8, marginBottom: 14 }}>
+        {/* Card 1: Total */}
         <div
           style={{
-            background: '#0f172a',
-            border: '2px solid #334155',
-            borderRadius: '12px',
-            padding: '16px 14px',
+            background: 'var(--soft, rgba(0, 0, 0, 0.02))',
+            border: '1px solid var(--line, #e2e8f0)',
+            borderRadius: 10,
+            padding: '8px 6px',
+            textAlign: 'center',
           }}
         >
-          <span
-            style={{
-              fontSize: '0.82rem',
-              color: '#38bdf8',
-              textTransform: 'uppercase',
-              display: 'block',
-              fontWeight: 800,
-              letterSpacing: '0.5px',
-              marginBottom: 8,
-            }}
-          >
-            TOTAL NO FRASCO
+          <span style={{ fontSize: '0.62rem', color: 'var(--muted)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.4px', display: 'block', marginBottom: 3 }}>
+            Frasco
           </span>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <div style={{ display: 'inline-flex', alignItems: 'baseline', gap: 2 }}>
             <input
               type="number"
               step="1"
               value={totalMg}
               onChange={(e) => setTotalMg(parseFloat(e.target.value) || 0)}
               style={{
-                width: '80px',
-                fontSize: '1.4rem',
-                fontWeight: 900,
-                padding: '8px 10px',
-                borderRadius: '8px',
-                border: '2px solid #38bdf8',
-                background: '#020617',
-                color: '#ffffff',
+                width: '42px',
+                fontSize: '1rem',
+                fontWeight: 600,
+                padding: '1px 0',
+                border: 'none',
+                borderBottom: '1px solid var(--line, #cbd5e1)',
+                background: 'transparent',
+                color: 'var(--text)',
                 textAlign: 'center',
+                outline: 'none',
               }}
             />
-            <span style={{ fontSize: '1.1rem', fontWeight: 800, color: '#38bdf8' }}>mg</span>
+            <span style={{ fontSize: '0.72rem', color: 'var(--muted)' }}>mg</span>
           </div>
         </div>
 
-        {/* QUADRO 2: VOLUME DO FRASCO */}
+        {/* Card 2: Volume */}
         <div
           style={{
-            background: '#0f172a',
-            border: '2px solid #334155',
-            borderRadius: '12px',
-            padding: '16px 14px',
+            background: 'var(--soft, rgba(0, 0, 0, 0.02))',
+            border: '1px solid var(--line, #e2e8f0)',
+            borderRadius: 10,
+            padding: '8px 6px',
+            textAlign: 'center',
           }}
         >
-          <span
-            style={{
-              fontSize: '0.82rem',
-              color: '#38bdf8',
-              textTransform: 'uppercase',
-              display: 'block',
-              fontWeight: 800,
-              letterSpacing: '0.5px',
-              marginBottom: 8,
-            }}
-          >
-            VOLUME DO FRASCO
+          <span style={{ fontSize: '0.62rem', color: 'var(--muted)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.4px', display: 'block', marginBottom: 3 }}>
+            Volume
           </span>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <div style={{ display: 'inline-flex', alignItems: 'baseline', gap: 2 }}>
             <input
               type="number"
               step="0.5"
               value={totalMl}
               onChange={(e) => setTotalMl(parseFloat(e.target.value) || 0)}
               style={{
-                width: '80px',
-                fontSize: '1.4rem',
-                fontWeight: 900,
-                padding: '8px 10px',
-                borderRadius: '8px',
-                border: '2px solid #38bdf8',
-                background: '#020617',
-                color: '#ffffff',
+                width: '42px',
+                fontSize: '1rem',
+                fontWeight: 600,
+                padding: '1px 0',
+                border: 'none',
+                borderBottom: '1px solid var(--line, #cbd5e1)',
+                background: 'transparent',
+                color: 'var(--text)',
                 textAlign: 'center',
+                outline: 'none',
               }}
             />
-            <span style={{ fontSize: '1.1rem', fontWeight: 800, color: '#38bdf8' }}>mL</span>
+            <span style={{ fontSize: '0.72rem', color: 'var(--muted)' }}>mL</span>
           </div>
         </div>
 
-        {/* QUADRO 3: DOSE PRESCRITA */}
+        {/* Card 3: Dose Prescrita */}
         <div
           style={{
-            background: 'rgba(13, 148, 136, 0.2)',
-            border: '2px solid #2dd4bf',
-            borderRadius: '12px',
-            padding: '16px 14px',
+            background: 'var(--soft, rgba(13, 148, 136, 0.07))',
+            border: '1px solid rgba(13, 148, 136, 0.25)',
+            borderRadius: 10,
+            padding: '8px 6px',
+            textAlign: 'center',
           }}
         >
-          <span
-            style={{
-              fontSize: '0.82rem',
-              color: '#2dd4bf',
-              textTransform: 'uppercase',
-              display: 'block',
-              fontWeight: 900,
-              letterSpacing: '0.5px',
-              marginBottom: 8,
-            }}
-          >
-            DOSE PRESCRITA
+          <span style={{ fontSize: '0.62rem', color: 'var(--accent, #0d9488)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.4px', display: 'block', marginBottom: 3 }}>
+            Dose Alvo
           </span>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <div style={{ display: 'inline-flex', alignItems: 'baseline', gap: 2 }}>
             <input
               type="number"
               step="0.25"
               value={targetDoseMg}
               onChange={(e) => setTargetDoseMg(parseFloat(e.target.value) || 0)}
               style={{
-                width: '85px',
-                fontSize: '1.4rem',
-                fontWeight: 900,
-                padding: '8px 10px',
-                borderRadius: '8px',
-                border: '2px solid #2dd4bf',
-                background: '#020617',
-                color: '#5eead4',
+                width: '46px',
+                fontSize: '1rem',
+                fontWeight: 700,
+                padding: '1px 0',
+                border: 'none',
+                borderBottom: '1.5px solid var(--accent, #0d9488)',
+                background: 'transparent',
+                color: 'var(--accent, #0d9488)',
                 textAlign: 'center',
+                outline: 'none',
               }}
             />
-            <span style={{ fontSize: '1.1rem', fontWeight: 900, color: '#2dd4bf' }}>mg</span>
+            <span style={{ fontSize: '0.72rem', fontWeight: 600, color: 'var(--accent, #0d9488)' }}>mg</span>
           </div>
         </div>
       </div>
 
-      {/* SELETOR DE TAMANHO DA SERINGA */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 10, marginBottom: 18 }}>
-        <span style={{ fontSize: '0.92rem', color: '#f1f5f9', fontWeight: 800 }}>
-          Tipo de Seringa de Insulina:
+      {/* Syringe Type Toggle - Soft Minimalist Segmented Pill */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 6, marginBottom: 12 }}>
+        <span style={{ fontSize: '0.74rem', color: 'var(--muted)', fontWeight: 500 }}>
+          Seringa utilizada:
         </span>
-        <div style={{ display: 'flex', gap: 8 }}>
+        <div style={{ display: 'inline-flex', background: 'var(--soft, rgba(0,0,0,0.03))', padding: 2, borderRadius: 8, border: '1px solid var(--line, #e2e8f0)' }}>
           {(['100ui', '50ui', '30ui'] as SyringeType[]).map((st) => {
             const isCur = syringeType === st;
             return (
@@ -297,222 +313,195 @@ export default function SyringeCalculator() {
                 type="button"
                 onClick={() => setSyringeType(st)}
                 style={{
-                  fontSize: '0.85rem',
-                  padding: '7px 14px',
-                  borderRadius: 8,
-                  border: isCur ? '2px solid #2dd4bf' : '1.5px solid #475569',
-                  background: isCur ? '#0d9488' : '#0f172a',
-                  color: '#ffffff',
+                  fontSize: '0.7rem',
+                  padding: '3px 9px',
+                  borderRadius: 6,
+                  border: 'none',
+                  background: isCur ? 'var(--card, #ffffff)' : 'transparent',
+                  color: isCur ? 'var(--accent, #0d9488)' : 'var(--muted)',
                   cursor: 'pointer',
-                  fontWeight: isCur ? 800 : 600,
+                  fontWeight: isCur ? 700 : 500,
+                  boxShadow: isCur ? '0 1px 3px rgba(0,0,0,0.08)' : 'none',
                   transition: 'all 0.15s ease',
                 }}
               >
-                {st === '100ui' ? '100 UI (1,0 mL)' : st === '50ui' ? '50 UI (0,5 mL)' : '30 UI (0,3 mL)'}
+                {st === '100ui' ? '100 UI' : st === '50ui' ? '50 UI' : '30 UI'}
               </button>
             );
           })}
         </div>
       </div>
 
-      {/* RESULTADO ALVO EM DESTAQUE GIGANTE */}
+      {/* Target Result - Delicate Pill Banner */}
       <div
         style={{
-          background: 'linear-gradient(135deg, rgba(13, 148, 136, 0.3) 0%, rgba(2, 6, 23, 0.8) 100%)',
-          border: '2px solid #0d9488',
-          padding: '16px 20px',
-          borderRadius: 14,
+          background: 'linear-gradient(135deg, var(--soft, #f0fdfa) 0%, rgba(13, 148, 136, 0.06) 100%)',
+          border: '1px solid rgba(13, 148, 136, 0.18)',
+          padding: '9px 12px',
+          borderRadius: 10,
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          flexWrap: 'wrap',
-          gap: 12,
-          marginBottom: 18,
+          gap: 8,
+          marginBottom: 12,
         }}
       >
-        <div>
-          <span style={{ fontSize: '0.85rem', fontWeight: 800, textTransform: 'uppercase', color: '#94a3b8', display: 'block', marginBottom: 4 }}>
-            ALVO NA SERINGA DE {maxUi} UI
-          </span>
-          <div style={{ fontSize: '1.8rem', color: '#ffffff', fontWeight: 900 }}>
-            Puxar exatamente: <span style={{ color: '#2dd4bf', textDecoration: 'underline' }}>{units100Ui} UI</span>
-          </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+          <span style={{ fontSize: '0.76rem', color: 'var(--muted)', fontWeight: 500 }}>Alvo na seringa:</span>
+          <strong style={{ fontSize: '1.05rem', color: 'var(--accent, #0d9488)', fontWeight: 700 }}>
+            {units100Ui} UI
+          </strong>
         </div>
-        <div style={{ textAlign: 'right' }}>
-          <span style={{ fontSize: '0.85rem', color: '#94a3b8', display: 'block', marginBottom: 2 }}>Volume em mL</span>
-          <span style={{ fontSize: '1.4rem', color: '#f8fafc', fontWeight: 800 }}>
-            {volumeToInjectMl.toFixed(2)} mL
-          </span>
+        <div style={{ fontSize: '0.74rem', color: 'var(--muted)' }}>
+          Equivale a <strong style={{ color: 'var(--text)', fontWeight: 600 }}>{volumeToInjectMl.toFixed(2)} mL</strong>
         </div>
       </div>
 
-      {/* ILUSTRAÇÃO REALISTA DA SERINGA (BD ULTRA-FINE MODEL) */}
+      {/* DELICATE MEDICAL SYRINGE SVG (ULTRA-FINE GLASS & SATIN SILICONE) */}
       <div
         style={{
-          background: '#070d1e',
-          borderRadius: 16,
-          border: '2px solid #334155',
-          padding: '24px 12px 14px',
-          marginBottom: 18,
+          background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(0, 0, 0, 0.02) 100%)',
+          borderRadius: 12,
+          border: '1px solid var(--line, #e2e8f0)',
+          padding: '16px 8px 8px',
+          marginBottom: 10,
           overflowX: 'auto',
           WebkitOverflowScrolling: 'touch',
         }}
       >
         <svg
-          viewBox="0 0 660 170"
-          style={{ width: '100%', minWidth: '580px', height: 'auto', display: 'block' }}
+          viewBox="0 0 660 100"
+          style={{ width: '100%', minWidth: '460px', height: 'auto', display: 'block' }}
           role="img"
-          aria-label={`Ilustração médica da seringa de ${maxUi} UI com êmbolo puxado até ${units100Ui} UI`}
+          aria-label={`Seringa com êmbolo puxado até ${units100Ui} UI`}
         >
           <defs>
-            {/* Metallic needle gradient */}
-            <linearGradient id="needleGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            {/* Satin stainless steel needle */}
+            <linearGradient id="needleFine" x1="0%" y1="0%" x2="0%" y2="100%">
               <stop offset="0%" stopColor="#cbd5e1" />
-              <stop offset="50%" stopColor="#ffffff" />
-              <stop offset="100%" stopColor="#64748b" />
+              <stop offset="50%" stopColor="#f8fafc" />
+              <stop offset="100%" stopColor="#94a3b8" />
             </linearGradient>
 
-            {/* U-100 Orange hub gradient */}
-            <linearGradient id="orangeHubGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#fb923c" />
-              <stop offset="50%" stopColor="#f97316" />
-              <stop offset="100%" stopColor="#c2410c" />
+            {/* Soft coral/orange hub */}
+            <linearGradient id="hubFine" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#fdba74" />
+              <stop offset="50%" stopColor="#fb923c" />
+              <stop offset="100%" stopColor="#f97316" />
             </linearGradient>
 
-            {/* Crystal clear barrel glass gradient */}
-            <linearGradient id="barrelGlass" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#f8fafc" />
-              <stop offset="30%" stopColor="#ffffff" />
-              <stop offset="70%" stopColor="#ffffff" />
-              <stop offset="100%" stopColor="#e2e8f0" />
+            {/* Luminous crystal barrel glass */}
+            <linearGradient id="glassFine" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="rgba(248, 250, 252, 0.9)" />
+              <stop offset="50%" stopColor="rgba(255, 255, 255, 0.98)" />
+              <stop offset="100%" stopColor="rgba(241, 245, 249, 0.85)" />
             </linearGradient>
 
-            {/* Medicine fluid gradient */}
-            <linearGradient id="fluidGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#2dd4bf" />
-              <stop offset="40%" stopColor="#0d9488" />
-              <stop offset="80%" stopColor="#0f766e" />
-              <stop offset="100%" stopColor="#115e59" />
+            {/* Translucent mint medicine liquid */}
+            <linearGradient id="fluidFine" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#5eead4" stopOpacity="0.85" />
+              <stop offset="60%" stopColor="#14b8a6" stopOpacity="0.8" />
+              <stop offset="100%" stopColor="#0d9488" stopOpacity="0.75" />
             </linearGradient>
 
-            {/* Black rubber stopper gradient with 3D cylindrical lighting */}
-            <linearGradient id="rubberStopperGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            {/* Soft silicone charcoal stopper (delicate, not aggressive black) */}
+            <linearGradient id="stopperFine" x1="0%" y1="0%" x2="0%" y2="100%">
               <stop offset="0%" stopColor="#475569" />
-              <stop offset="25%" stopColor="#1e293b" />
-              <stop offset="50%" stopColor="#0f172a" />
-              <stop offset="75%" stopColor="#1e293b" />
-              <stop offset="100%" stopColor="#020617" />
+              <stop offset="50%" stopColor="#334155" />
+              <stop offset="100%" stopColor="#1e293b" />
             </linearGradient>
 
-            {/* Plunger plastic rod gradient */}
-            <linearGradient id="rodGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#f1f5f9" />
-              <stop offset="50%" stopColor="#cbd5e1" />
-              <stop offset="100%" stopColor="#64748b" />
+            {/* Plunger satin rod */}
+            <linearGradient id="rodFine" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#f8fafc" />
+              <stop offset="50%" stopColor="#e2e8f0" />
+              <stop offset="100%" stopColor="#cbd5e1" />
             </linearGradient>
-
-            {/* Drop shadow for pointer badge */}
-            <filter id="badgeGlow" x="-20%" y="-20%" width="140%" height="140%">
-              <feDropShadow dx="0" dy="3" stdDeviation="3" floodColor="#2dd4bf" floodOpacity="0.4" />
-            </filter>
           </defs>
 
-          {/* 1. NEEDLE (AGULHA BISELADA) */}
-          <line x1="10" y1="85" x2="60" y2="85" stroke="url(#needleGrad)" strokeWidth="3" strokeLinecap="round" />
-          <polygon points="10,85 16,83 16,87" fill="#64748b" />
+          {/* 1. Fine Needle (Stainless Steel) */}
+          <line x1="14" y1="52" x2="62" y2="52" stroke="url(#needleFine)" strokeWidth="1.8" strokeLinecap="round" />
+          <polygon points="14,52 18,50.8 18,53.2" fill="#94a3b8" />
 
-          {/* 2. U-100 ORANGE NEEDLE HUB (CANHÃO LARANJA PADRÃO INSULINA) */}
+          {/* 2. Soft Coral Insulin Hub */}
           <path
-            d="M 60,74 L 88,72 L 92,66 L 96,66 L 96,104 L 92,104 L 88,98 L 60,96 Z"
-            fill="url(#orangeHubGrad)"
-            stroke="#7c2d12"
-            strokeWidth="1.8"
+            d="M 62,45 L 86,44 L 90,41 L 94,41 L 94,63 L 90,63 L 86,60 L 62,59 Z"
+            fill="url(#hubFine)"
+            stroke="#ea580c"
+            strokeWidth="0.8"
+            opacity="0.9"
           />
-          {/* Hub grip ribs */}
-          <line x1="72" y1="74" x2="72" y2="96" stroke="#ea580c" strokeWidth="1.5" />
-          <line x1="80" y1="73" x2="80" y2="97" stroke="#ea580c" strokeWidth="1.5" />
+          <line x1="74" y1="45" x2="74" y2="59" stroke="#fed7aa" strokeWidth="0.8" />
+          <line x1="82" y1="44" x2="82" y2="60" stroke="#fed7aa" strokeWidth="0.8" />
 
-          {/* 3. BARREL CONE (BICO DE LUER/CONE DO TUBO) */}
-          <path d="M 96,73 L 115,65 L 115,105 L 96,97 Z" fill="#e2e8f0" stroke="#64748b" strokeWidth="1.8" />
+          {/* 3. Luer Barrel Cone */}
+          <path d="M 94,46 L 112,38 L 112,66 L 94,58 Z" fill="#f1f5f9" stroke="#cbd5e1" strokeWidth="0.8" />
 
-          {/* 4. PLUNGER ROD (HASTE PLÁSTICA DO ÊMBOLO) */}
+          {/* 4. Plunger Satin Rod (Extending Right) */}
           <rect
-            x={Math.min(540, liquidTargetX + 26)}
-            y="76"
-            width={Math.max(15, 630 - (liquidTargetX + 26))}
-            height="18"
-            fill="url(#rodGrad)"
-            stroke="#64748b"
-            strokeWidth="1.5"
-          />
-          <line
-            x1={Math.min(540, liquidTargetX + 26)}
-            y1="85"
-            x2="630"
-            y2="85"
-            stroke="#475569"
-            strokeWidth="2"
-            strokeDasharray="6 4"
+            x={Math.min(540, liquidTargetX + 20)}
+            y="47"
+            width={Math.max(12, 630 - (liquidTargetX + 20))}
+            height="10"
+            fill="url(#rodFine)"
+            stroke="#cbd5e1"
+            strokeWidth="0.8"
+            rx="1"
           />
 
-          {/* 5. THUMB REST / PLUNGER BUTTON (BOTÃO DO POLEGAR) */}
-          <rect x="630" y="52" width="16" height="66" rx="4" fill="url(#rodGrad)" stroke="#475569" strokeWidth="2" />
-          <line x1="635" y1="60" x2="635" y2="110" stroke="#94a3b8" strokeWidth="1.5" />
-          <line x1="640" y1="60" x2="640" y2="110" stroke="#94a3b8" strokeWidth="1.5" />
+          {/* 5. Plunger Thumb Rest Button */}
+          <rect x="630" y="32" width="10" height="40" rx="3" fill="url(#rodFine)" stroke="#94a3b8" strokeWidth="1" />
 
-          {/* 6. SYRINGE BARREL GLASS (CORPO CILÍNDRICO PRINCIPAL) */}
+          {/* 6. Syringe Barrel Glass Tube */}
           <rect
-            x="115"
-            y="52"
+            x="112"
+            y="30"
             width="430"
-            height="66"
+            height="44"
             rx="4"
-            fill="url(#barrelGlass)"
-            stroke="#0f172a"
-            strokeWidth="2.5"
+            fill="url(#glassFine)"
+            stroke="#94a3b8"
+            strokeWidth="1.2"
           />
 
-          {/* 7. LIQUID MEDICINE FILL (LÍQUIDO DO MEDICAMENTO) */}
+          {/* 7. Translucent Mint Medicine Fluid */}
           {clampedUnits > 0 && (
             <rect
-              x="115"
-              y="53.5"
-              width={Math.max(0, liquidTargetX - 115)}
-              height="63"
-              fill="url(#fluidGrad)"
-              opacity="0.95"
+              x="112"
+              y="31"
+              width={Math.max(0, liquidTargetX - 112)}
+              height="42"
+              fill="url(#fluidFine)"
+              rx="1"
             />
           )}
 
-          {/* Liquid meniscus shine reflection */}
+          {/* Meniscus Light Glow */}
           {clampedUnits > 0 && (
             <rect
-              x="115"
-              y="55"
-              width={Math.max(0, liquidTargetX - 115)}
-              height="8"
+              x="112"
+              y="32"
+              width={Math.max(0, liquidTargetX - 112)}
+              height="5"
               fill="#ffffff"
-              opacity="0.4"
+              opacity="0.45"
             />
           )}
 
-          {/* 8. BLACK RUBBER PLUNGER STOPPER (ÊMBOLO DE BORRACHA PRETO COM ANÉIS DUPLOS) */}
+          {/* 8. Silicone Stopper (Delicate Dual Ring) */}
           <g transform={`translate(${liquidTargetX}, 0)`}>
-            {/* Front Sealing Ring (Front Face = EXACT DOSE LINE) */}
-            <rect x="0" y="53" width="10" height="64" fill="url(#rubberStopperGrad)" stroke="#020617" strokeWidth="1.5" />
-            {/* Stopper Waist (recesso central da borracha) */}
-            <rect x="10" y="57" width="8" height="56" fill="#0f172a" stroke="#020617" strokeWidth="1" />
-            {/* Rear Sealing Ring */}
-            <rect x="18" y="53" width="10" height="64" fill="url(#rubberStopperGrad)" stroke="#020617" strokeWidth="1.5" />
-            {/* Bevel on front tip */}
-            <polygon points="0,53 -4,85 0,117" fill="#0f172a" />
+            {/* Front sealing ring (exact dose alignment!) */}
+            <rect x="0" y="31" width="7" height="42" fill="url(#stopperFine)" stroke="#1e293b" strokeWidth="0.8" rx="0.5" />
+            {/* Stopper center waist */}
+            <rect x="7" y="34" width="6" height="36" fill="#334155" opacity="0.9" />
+            {/* Rear sealing ring */}
+            <rect x="13" y="31" width="7" height="42" fill="url(#stopperFine)" stroke="#1e293b" strokeWidth="0.8" rx="0.5" />
           </g>
 
-          {/* 9. FINGER FLANGE WINGS (ASAS DE APOIO PARA OS DEDOS) */}
-          <rect x="545" y="30" width="16" height="110" rx="6" fill="#f1f5f9" stroke="#0f172a" strokeWidth="2.5" />
-          <line x1="553" y1="38" x2="553" y2="132" stroke="#cbd5e1" strokeWidth="2" />
+          {/* 9. Finger Flange Wings */}
+          <rect x="542" y="20" width="10" height="64" rx="3" fill="#f8fafc" stroke="#94a3b8" strokeWidth="1.2" />
 
-          {/* 10. GRADUATION TICKS & NUMBERS (TRAÇOS DE GRADUAÇÃO E NÚMEROS) */}
+          {/* 10. Graduation Ticks & Numbers (Delicate Hairline & Clean Font) */}
           {Array.from({ length: numTicks + 1 }).map((_, i) => {
             const val = i * tickStep;
             const x = barrelStartX + (val / maxUi) * scaleLength;
@@ -523,40 +512,34 @@ export default function SyringeCalculator() {
                 {/* Top tick mark */}
                 <line
                   x1={x}
-                  y1="52"
+                  y1="30"
                   x2={x}
-                  y2={val % 10 === 0 ? "70" : "63"}
-                  stroke={isTarget ? "#0d9488" : "#020617"}
-                  strokeWidth={isTarget ? "3" : val % 10 === 0 ? "2" : "1.2"}
+                  y2={val % 10 === 0 ? "41" : "36"}
+                  stroke={isTarget ? "#0d9488" : "#475569"}
+                  strokeWidth={isTarget ? "1.8" : val % 10 === 0 ? "1.2" : "0.7"}
+                  opacity={isTarget ? 1 : 0.8}
                 />
 
                 {/* Bottom tick mark */}
                 <line
                   x1={x}
-                  y1={val % 10 === 0 ? "98" : "105"}
+                  y1={val % 10 === 0 ? "63" : "68"}
                   x2={x}
-                  y2="118"
-                  stroke={isTarget ? "#0d9488" : "#020617"}
-                  strokeWidth={isTarget ? "3" : val % 10 === 0 ? "2" : "1.2"}
+                  y2="74"
+                  stroke={isTarget ? "#0d9488" : "#475569"}
+                  strokeWidth={isTarget ? "1.8" : val % 10 === 0 ? "1.2" : "0.7"}
+                  opacity={isTarget ? 1 : 0.8}
                 />
 
-                {/* Sub-ticks (intermediate marks) */}
-                {val < maxUi && (
-                  <>
-                    <line x1={x + scaleLength / numTicks / 2} y1="52" x2={x + scaleLength / numTicks / 2} y2="60" stroke="#334155" strokeWidth="1.2" />
-                    <line x1={x + scaleLength / numTicks / 2} y1="110" x2={x + scaleLength / numTicks / 2} y2="118" stroke="#334155" strokeWidth="1.2" />
-                  </>
-                )}
-
-                {/* Number labels (bold black/dark text) */}
+                {/* Number labels */}
                 {val % (syringeType === '100ui' ? 10 : 5) === 0 && (
                   <text
                     x={x}
-                    y="89"
+                    y="55"
                     textAnchor="middle"
-                    fill={isTarget ? "#0f766e" : "#020617"}
-                    fontSize={isTarget ? "14" : "12"}
-                    fontWeight="900"
+                    fill={isTarget ? "#0f766e" : "#334155"}
+                    fontSize={isTarget ? "10" : "8.5"}
+                    fontWeight={isTarget ? "800" : "600"}
                     fontFamily="system-ui, -apple-system, sans-serif"
                   >
                     {val}
@@ -566,80 +549,62 @@ export default function SyringeCalculator() {
             );
           })}
 
-          {/* 11. DYNAMIC TARGET CALLOUT (SETA E ETIQUETA INDICADORA NO PONTO EXATO) */}
-          <g transform={`translate(${liquidTargetX}, 0)`} filter="url(#badgeGlow)">
-            {/* Target Line Down into the rubber front ring */}
-            <line x1="0" y1="28" x2="0" y2="52" stroke="#2dd4bf" strokeWidth="3" strokeDasharray="3 2" />
+          {/* 11. Delicate Floating Indicator Chip */}
+          <g transform={`translate(${liquidTargetX}, 0)`}>
+            {/* Soft guide line */}
+            <line x1="0" y1="23" x2="0" y2="30" stroke="#0d9488" strokeWidth="1.5" strokeDasharray="2 1.5" />
+            <polygon points="0,29 -3.5,23 3.5,23" fill="#0d9488" />
 
-            {/* Pointer Triangle */}
-            <polygon points="0,50 -7,38 7,38" fill="#2dd4bf" />
-
-            {/* Target Pill Badge */}
-            <rect x="-56" y="4" width="112" height="30" rx="8" fill="#0f766e" stroke="#2dd4bf" strokeWidth="2" />
+            {/* Chip Badge */}
+            <rect x="-30" y="4" width="60" height="18" rx="9" fill="#0d9488" />
             <text
               x="0"
-              y="24"
+              y="16.5"
               textAnchor="middle"
               fill="#ffffff"
-              fontSize="13"
-              fontWeight="900"
+              fontSize="9"
+              fontWeight="700"
               fontFamily="system-ui, -apple-system, sans-serif"
             >
-              ▼ {units100Ui} UI ALVO
+              {units100Ui} UI
             </text>
           </g>
         </svg>
 
-        {/* Legend beneath the syringe illustration */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 10, padding: '0 8px', fontSize: '0.8rem', color: '#cbd5e1', fontWeight: 700 }}>
-          <span>◁ Agulha e Canhão Laranja U-100</span>
-          <span style={{ color: '#2dd4bf', fontWeight: 900 }}>● Borda Dianteira da Borracha Preta = {units100Ui} UI</span>
-          <span>Apoio do Polegar ▷</span>
+        {/* Legend */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 4, padding: '0 4px', fontSize: '0.68rem', color: 'var(--muted)' }}>
+          <span>Agulha U-100</span>
+          <span style={{ color: 'var(--accent, #0d9488)', fontWeight: 600 }}>Alinhar na primeira borda do êmbolo ({units100Ui} UI)</span>
+          <span>Apoio</span>
         </div>
       </div>
 
       {/* Overflow Warning if units exceed syringe */}
       {units100Ui > maxUi && (
-        <div style={{ background: '#7f1d1d', border: '2px solid #ef4444', color: '#fef2f2', padding: '12px 16px', borderRadius: 10, marginBottom: 16, fontWeight: 800, fontSize: '0.92rem' }}>
-          ⚠️ Atenção: A dose necessária ({units100Ui} UI) é maior do que a capacidade desta seringa de {maxUi} UI. Selecione a seringa de 100 UI acima para aplicar com segurança.
+        <div style={{ background: 'rgba(239, 68, 68, 0.08)', border: '1px solid rgba(239, 68, 68, 0.25)', color: '#ef4444', padding: '6px 10px', borderRadius: 8, marginBottom: 10, fontSize: '0.75rem', fontWeight: 600 }}>
+          ⚠️ A dose ({units100Ui} UI) excede a capacidade desta seringa de {maxUi} UI. Selecione a de 100 UI.
         </div>
       )}
 
-      {/* PASSO A PASSO DA APLICAÇÃO EM CAIXA DE ALTO CONTRASTE */}
+      {/* Gentle Guidance Footer */}
       <div
         style={{
-          background: 'rgba(15, 23, 42, 0.85)',
-          borderRadius: 12,
-          padding: '18px 20px',
-          border: '2px solid #0d9488',
+          background: 'var(--soft, rgba(13, 148, 136, 0.04))',
+          borderRadius: 8,
+          padding: '8px 12px',
+          border: '1px solid var(--line, #e2e8f0)',
+          display: 'flex',
+          alignItems: 'center',
+          gap: 6,
         }}
       >
-        <strong style={{ fontSize: '1.05rem', color: '#2dd4bf', display: 'block', marginBottom: 8, fontWeight: 900 }}>
-          Orientação Prática para sua Aplicação:
-        </strong>
-        <p style={{ fontSize: '0.92rem', color: '#e2e8f0', margin: 0, lineHeight: 1.6, fontWeight: 600 }}>
-          Com a concentração de <strong style={{ color: '#ffffff' }}>{concentrationMgPerMl.toFixed(1)} mg/mL</strong> (frasco de {totalMg}mg em {totalMl}mL), para aplicar a sua dose prescrita de <strong style={{ color: '#2dd4bf' }}>{targetDoseMg} mg</strong>:
-        </p>
-        <div
-          style={{
-            marginTop: 10,
-            padding: '12px 16px',
-            background: '#020617',
-            borderRadius: 8,
-            border: '2px solid #2dd4bf',
-            color: '#ffffff',
-            fontSize: '1rem',
-            fontWeight: 800,
-          }}
-        >
-          👉 Puxe o êmbolo até que a <span style={{ color: '#2dd4bf' }}>primeira borda da borracha preta</span> fique perfeitamente alinhada com o traço <span style={{ color: '#2dd4bf' }}>{units100Ui} UI ({volumeToInjectMl.toFixed(2)} mL)</span>.
-        </div>
+        <span style={{ color: 'var(--accent, #0d9488)', display: 'flex' }}>
+          <Icon name="check" size={14} />
+        </span>
+        <span style={{ fontSize: '0.76rem', color: 'var(--text)', lineHeight: 1.4 }}>
+          Puxe o êmbolo até a linha da borracha atingir o traço <strong>{units100Ui} UI</strong> ({volumeToInjectMl.toFixed(2)} mL).
+        </span>
       </div>
-
-      {/* Safety Medical Disclaimer */}
-      <p style={{ fontSize: '0.75rem', color: '#64748b', marginTop: 14, marginBottom: 0, lineHeight: 1.45 }}>
-        * Ferramenta de auxílio matemático. Nunca altere sua dose sem prescrição médica. Sempre confirme a concentração e volume indicados no rótulo da farmácia de manipulação credenciada antes da aplicação.
-      </p>
     </section>
   );
 }
