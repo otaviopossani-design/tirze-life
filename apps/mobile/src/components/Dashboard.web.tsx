@@ -56,7 +56,173 @@ export default function Dashboard() {
  <aside className="tl-sidebar"><a className="tl-brand" href="#" onClick={e=>{e.preventDefault();go('home');}}><span className="tl-logo"><Icon name="activity" size={26}/></span>tirze<span>life</span></a><div className="tl-workspace"><span className="tl-workspace-icon"><Icon name="heart" size={18}/></span><div>Meu espaço de cuidado<small>Jornada pessoal</small></div></div><span className="tl-nav-label">ACOMPANHAMENTO</span><nav aria-label="Navegação principal">{nav.map(n=><button key={n.id} className={tab===n.id?'active':''} aria-current={tab===n.id?'page':undefined} onClick={()=>go(n.id)}><Icon name={n.icon}/><span>{n.name}</span>{n.id==='home'&&<i/>}</button>)}</nav><div className="tl-sidebar-bottom"><a className="tl-clinic-link" href="/clinica">Painel da clínica ↗</a><div className="tl-care-note"><Icon name="leaf" size={23}/><strong>Cada passo conta.</strong><p>O seu caminho não precisa ser perfeito para ser seu.</p><span>MENOS CULPA. MAIS CUIDADO.</span></div><button className="tl-profile" onClick={()=>go('profile')}><span className="tl-avatar">{displayName.slice(0,1)}</span><span>{displayName}<small>Perfil de demonstração</small></span><Icon name="settings" size={17}/></button></div></aside>
  <main id="conteudo-principal" tabIndex={-1} className="tl-main"><div className="tl-breadcrumb">Meu espaço <span>/</span> {nav.find(n=>n.id===tab)?.name}<span className="tl-private"><Icon name="heart" size={14}/> Feito para cuidar de você</span></div><header className="tl-page-heading"><div><div className="tl-date">{new Date().toLocaleDateString('pt-BR',{weekday:'long',day:'numeric',month:'long'}).toUpperCase()} <span>• DEMONSTRAÇÃO</span></div><h1>{tab==='home'?<>Olá, {displayName}<span className="tl-greeting">✳</span></>:tab==='cycle'?'Seu tratamento, com contexto.':tab==='nutrition'?'Seu cardápio, dia a dia.':tab==='care'?'Um plano que cabe na sua vida.':tab==='diary'?'Um espaço para você.':tab==='profile'?'Seu cuidado começa com você.':tab==='activity'?'Movimento para sua rotina.':'Cada passo faz parte.'}</h1><p>{tab==='home'?'Hoje é mais uma oportunidade de cuidar de você. Vamos no seu ritmo.':'Acompanhe sua jornada com mais escuta e gentileza.'}</p></div><button className="tl-outline tl-date-button" onClick={()=>setDialog('application')}><Icon name="plus" size={17}/> Registrar aplicação</button></header>
  {quick.error&&<p className="care-caution" role="alert">{quick.error}</p>}
- {tab==='home'&&<><CoordinationSummaryCard patientId={patientId} onOpen={next=>{setCareTab(next);go('care');}}/><section className="tl-card care-profile-entry"><div><span className="tl-kicker">MOVIMENTO E DISPOSIÇÃO</span><p>Pequenos passos, força e uma rotina possível.</p></div><button className="tl-outline" onClick={()=>go('activity')}>Explorar atividades <Icon name="arrow" size={16}/></button></section><div className="tl-day-note"><span><Icon name="leaf" size={18}/><strong>Pequenos cuidados. Grandes conquistas.</strong> Seu bem-estar vai além da balança.</span><span className="tl-day-note-end">Um dia de cada vez <Icon name="arrow" size={16}/></span></div><div className="tl-overview-grid">{cycleCard}<section className="tl-card"><span className="tl-kicker"><Icon name="activity" size={16}/> CIÊNCIA &amp; DOSES</span><h2>Base Científica por Dose</h2><p>Diretrizes internacionais e manejo de sintomas das doses de 2,5 mg a 15 mg.</p><button className="tl-outline full" onClick={()=>go('cycle')}>Consultar evidências e doses <Icon name="arrow" size={16}/></button></section><section className="tl-card tl-metric-card"><div className="tl-card-heading"><span className="tl-kicker"><Icon name="drop" size={16}/> HIDRATAÇÃO</span><span className="tl-percent">{waterTarget?Math.round(water/waterTarget*100)+'%':'Registro'}</span></div><Ring value={water} max={waterTarget} color="var(--accent)"><Icon name="drop" size={19}/><strong>{(water/1000).toLocaleString('pt-BR',{maximumFractionDigits:2})}<small> L</small></strong><span>{waterTarget?'de '+(waterTarget/1000).toLocaleString('pt-BR')+' L':'registrados no exemplo'}</span></Ring><h3>Cada gole conta.</h3><p>Um pouquinho, várias vezes ao dia.</p><button className="tl-outline full" onClick={()=>{if(quick.save('water','250 ml de água informados.',{amountMl:250}))setNotice('250 ml salvos no histórico de hoje.');}}><Icon name="plus" size={16}/> 250 ml de água</button></section><section className="tl-card tl-metric-card protein"><div className="tl-card-heading"><span className="tl-kicker"><Icon name="meal" size={16}/> REFEIÇÕES</span><span className="tl-percent">Hoje</span></div><Ring value={nutrition.completed} max={nutrition.plan?4:0} color="var(--green)"><Icon name="meal" size={19}/><strong>{nutrition.completed}<small> / {nutrition.plan?4:0}</small></strong><span>refeições registradas</span></Ring><h3>Um cuidado de cada vez.</h3><p>Seu plano, acompanhado pela equipe.</p><button className="tl-outline full" onClick={()=>go('nutrition')}>Ver meu plano<Icon name="arrow" size={16}/></button></section></div><div className="tl-lower-grid">{nutritionCard}<div className="tl-right-stack"><NextMealReactiveCard patientId={patientId} patientName={displayName} currentMedication={applicationMedication || 'Tirzepatida'} currentDoseMg={2.5}/>{diaryCard}<section className="tl-life"><div className="tl-life-top"><span className="tl-kicker">MODO VIDA REAL</span><Icon name="sun" size={24}/></div><h2>A vida acontece.<br/>E está tudo bem.</h2><p>Um jantar, um encontro, uma pausa.<br/>Seus momentos também fazem parte.</p><button className="tl-text-button" onClick={()=>setDialog('life')}>Registrar meu momento<Icon name="arrow" size={17}/></button></section></div></div></>}
+ {tab==='home'&&<div className="tl-minimal-home" style={{ maxWidth: '640px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+  {/* 1. HERO SERENO DE ACOLHIMENTO */}
+  <section style={{ background: 'var(--card, #ffffff)', border: '1px solid var(--line, #e2e8f0)', borderRadius: '16px', padding: '20px 18px', boxShadow: '0 4px 20px -2px rgba(0,0,0,0.03)' }}>
+    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
+      <div>
+        <span style={{ fontSize: '0.74rem', fontWeight: 700, color: 'var(--accent, #0d9488)', textTransform: 'uppercase', letterSpacing: '0.6px' }}>
+          Hoje · {new Date().toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long' })}
+        </span>
+        <h2 style={{ fontSize: '1.4rem', fontWeight: 600, color: 'var(--text)', margin: '4px 0 2px 0', letterSpacing: '-0.4px' }}>
+          Olá, {displayName}
+        </h2>
+        <p style={{ fontSize: '0.85rem', color: 'var(--muted)', margin: 0 }}>
+          Seu corpo está em equilíbrio. Vamos no seu ritmo hoje.
+        </p>
+      </div>
+      <button
+        type="button"
+        onClick={() => setDialog('life')}
+        style={{
+          background: 'var(--soft, rgba(13, 148, 136, 0.08))',
+          border: '1px solid var(--line, #e2e8f0)',
+          borderRadius: 999,
+          padding: '6px 12px',
+          color: 'var(--text)',
+          fontSize: '0.75rem',
+          fontWeight: 600,
+          cursor: 'pointer',
+          display: 'flex',
+          alignItems: 'center',
+          gap: 6,
+        }}
+      >
+        <Icon name="sun" size={14} /> Modo Vida Real
+      </button>
+    </div>
+  </section>
+
+  {/* 2. AS 3 AÇÕES DIRETAS (ÁGUA, REFEIÇÃO, SENSAÇÃO) */}
+  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '14px' }}>
+    {/* AÇÃO 1: HIDRATAÇÃO EM 1 TOQUE */}
+    <section style={{ background: 'var(--card, #ffffff)', border: '1px solid var(--line, #e2e8f0)', borderRadius: '16px', padding: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+        <div style={{ width: '42px', height: '42px', borderRadius: '50%', background: 'rgba(13, 148, 136, 0.1)', color: 'var(--accent, #0d9488)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <Icon name="drop" size={20} />
+        </div>
+        <div>
+          <span style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--muted)', textTransform: 'uppercase' }}>Água Hoje</span>
+          <div style={{ fontSize: '1.15rem', fontWeight: 700, color: 'var(--text)' }}>
+            {(water / 1000).toLocaleString('pt-BR', { maximumFractionDigits: 1 })} L
+            <span style={{ fontSize: '0.78rem', fontWeight: 500, color: 'var(--muted)' }}> / {waterTarget ? (waterTarget / 1000).toFixed(1) + ' L' : 'meta'}</span>
+          </div>
+        </div>
+      </div>
+      <button
+        type="button"
+        onClick={() => { if (quick.save('water', '250 ml de água informados.', { amountMl: 250 })) setNotice('250 mL registrados!'); }}
+        style={{
+          background: 'var(--accent, #0d9488)',
+          color: '#ffffff',
+          border: 'none',
+          borderRadius: 999,
+          padding: '8px 14px',
+          fontSize: '0.8rem',
+          fontWeight: 700,
+          cursor: 'pointer',
+          display: 'flex',
+          alignItems: 'center',
+          gap: 6,
+          boxShadow: '0 2px 8px rgba(13, 148, 136, 0.25)',
+        }}
+      >
+        <Icon name="plus" size={14} /> 250 mL
+      </button>
+    </section>
+
+    {/* AÇÃO 2: CHECK-IN RÁPIDO DE COMO VOCÊ ESTÁ */}
+    <section style={{ background: 'var(--card, #ffffff)', border: '1px solid var(--line, #e2e8f0)', borderRadius: '16px', padding: '16px' }}>
+      <span style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--muted)', textTransform: 'uppercase', display: 'block', marginBottom: '8px' }}>
+        Como você está se sentindo?
+      </span>
+      <div style={{ display: 'flex', gap: '6px' }}>
+        {[
+          { label: 'Muito bem', icon: 'heart', desc: 'Disposição ótima' },
+          { label: 'Sem fome', icon: 'leaf', desc: 'Saciedade alta' },
+          { label: 'Enjoo leve', icon: 'activity', desc: 'Sensibilidade gástrica' },
+        ].map((m) => (
+          <button
+            key={m.label}
+            type="button"
+            onClick={() => { if (quick.save('note', m.label + ' · ' + m.desc)) setNotice('Sensação registrada: ' + m.label); }}
+            style={{
+              flex: 1,
+              padding: '6px 4px',
+              borderRadius: '8px',
+              border: '1px solid var(--line, #e2e8f0)',
+              background: 'transparent',
+              color: 'var(--text)',
+              fontSize: '0.72rem',
+              fontWeight: 600,
+              cursor: 'pointer',
+              textAlign: 'center',
+            }}
+          >
+            {m.label}
+          </button>
+        ))}
+      </div>
+    </section>
+  </div>
+
+  {/* 3. PRÓXIMA REFEIÇÃO REATIVA (DIRETA E SEM POLUIÇÃO) */}
+  <NextMealReactiveCard
+    patientId={patientId}
+    patientName={displayName}
+    currentMedication={applicationMedication || 'Tirzepatida'}
+    currentDoseMg={2.5}
+  />
+
+  {/* 4. ATALHO LIMPO PARA VER CICLO & DOSAGEM */}
+  <div style={{ display: 'flex', gap: '10px' }}>
+    <button
+      type="button"
+      onClick={() => go('cycle')}
+      style={{
+        flex: 1,
+        background: 'var(--card, #ffffff)',
+        border: '1px solid var(--line, #e2e8f0)',
+        borderRadius: '12px',
+        padding: '12px',
+        cursor: 'pointer',
+        textAlign: 'left',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+      }}
+    >
+      <div>
+        <strong style={{ fontSize: '0.85rem', color: 'var(--text)', display: 'block' }}>Calculadora &amp; Doses</strong>
+        <span style={{ fontSize: '0.74rem', color: 'var(--muted)' }}>Conferir marcação da seringa ↗</span>
+      </div>
+      <Icon name="arrow" size={16} />
+    </button>
+
+    <button
+      type="button"
+      onClick={() => go('nutrition')}
+      style={{
+        flex: 1,
+        background: 'var(--card, #ffffff)',
+        border: '1px solid var(--line, #e2e8f0)',
+        borderRadius: '12px',
+        padding: '12px',
+        cursor: 'pointer',
+        textAlign: 'left',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+      }}
+    >
+      <div>
+        <strong style={{ fontSize: '0.85rem', color: 'var(--text)', display: 'block' }}>Plano Alimentar</strong>
+        <span style={{ fontSize: '0.74rem', color: 'var(--muted)' }}>Ver cardápio completo ↗</span>
+      </div>
+      <Icon name="arrow" size={16} />
+    </button>
+  </div>
+</div>}
  <div className="care-profile-entry"><p>{care.record?(care.record.profile.channel==='clinic'?'Jornada com a clínica · ':'Jornada individual · ')+care.record.profile.name:'Complete seu cadastro para guardar medidas e atividades.'}</p><a href="/?cadastro=1">Experimentar cadastro individual ↗</a></div>
  {pendingTab&&<div className="care-caution" role="alert"><strong>Há alterações não salvas.</strong><div className="care-actions"><button className="tl-outline" onClick={()=>setPendingTab('')}>Continuar editando</button><button className="tl-outline" onClick={()=>{setProfileDirty(false);setCoordDirty(false);setDiary('');navigate(pendingTab);setPendingTab('');}}>Descartar e sair</button></div></div>}
  {tab==='profile'&&<CareProfilePanel key={patientId||'new'} patientId={patientId} onDirty={setProfileDirty} channel={patientId.startsWith('TL-')?'clinic':'individual'} onSaved={r=>{setPatientId(r.profile.id);window.history.replaceState(null,'','/?paciente='+encodeURIComponent(r.profile.id)+'&view=profile');}}/>}
